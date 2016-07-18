@@ -12,6 +12,7 @@ import App from '../components/App';
 
 // Child routes
 import home from './home';
+import character from './character';
 import contact from './contact';
 import login from './login';
 import register from './register';
@@ -24,6 +25,7 @@ export default {
 
   children: [
     home,
+    character,
     contact,
     login,
     register,
