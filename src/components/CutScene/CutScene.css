@@ -1,0 +1,27 @@
+.cutSceneWrapper, .cutSceneWrapper * {
+  transition: opacity ease 2s;
+  padding: 0;
+  margin: 0;
+}
+.cutSceneWrapper {
+  background: #000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.cutSceneVideo {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  opacity: 0;
+}
+.playing {
+  opacity: 1;
+}
+.hiddenOpacity {
+  opacity: 0;
+}

@@ -13,7 +13,7 @@ import CutScene from '../../components/CutScene';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Home.css';
 
-const title = 'React Starter Kit';
+const title = 'Destiny';
 
 function Home({ news }, context) {
   context.setTitle(title);
@@ -32,7 +32,7 @@ function Home({ news }, context) {
   */
   return (
     <div className={s.root}>
-      <CutScene/>
+      <CutScene fadeOutSpeed="3000" nextUrl="/about/" videoSrc="visit-planet.mp4"/>
       <div className={s.container}></div>
     </div>
   );
