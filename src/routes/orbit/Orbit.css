@@ -1,6 +1,7 @@
 @import '../../components/global.css';
 @import '../../components/variables.css';
 
+/* TODO: Component should not affect body, html style. Should use shadow DOM or container instead */
 body, html {
   background: url(/images/deep-space.jpg) repeat #000;
 }
