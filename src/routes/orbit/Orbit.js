@@ -9,11 +9,11 @@
 
 import React, { PropTypes } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from './Character.css';
+import s from './Orbit.css';
 
-const title = 'Character';
+const title = 'Orbit';
 
-function Character(props, context) {
+function Orbit(props, context) {
   context.setTitle(title);
   return (
     <div className={s.root}>
@@ -25,6 +25,6 @@ function Character(props, context) {
   );
 }
 
-Character.contextTypes = { setTitle: PropTypes.func.isRequired };
+Orbit.contextTypes = { setTitle: PropTypes.func.isRequired };
 
-export default withStyles(s)(Character);
+export default withStyles(s)(Orbit);
