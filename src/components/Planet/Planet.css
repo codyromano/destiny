@@ -1,0 +1,25 @@
+.planet {
+  width: 100%;
+  max-width: 30rem;
+  padding: 2.5%;
+  transition: opacity ease 1s;
+}
+
+.planet-preloading {
+  opacity: 0;
+}
+
+.discovered {
+  opacity: 1;
+}
+
+.planetHeading {
+  color: #fff;
+}
+
+.planetImage {
+  margin: 0 auto;
+  width: 100%;
+  /* TODO: Remove this when you have a proper planet graphic */
+  border-radius: 50%;
+}

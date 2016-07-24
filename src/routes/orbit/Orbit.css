@@ -1,1 +1,6 @@
+@import '../../components/global.css';
 @import '../../components/variables.css';
+
+body, html {
+  background: url(/images/deep-space.jpg) repeat #000;
+}

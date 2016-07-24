@@ -1,0 +1,6 @@
+{
+  "name": "Planet",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./Planet.js"
+}
