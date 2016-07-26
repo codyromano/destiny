@@ -15,7 +15,7 @@ import home from './home';
 import orbit from './orbit';
 import contact from './contact';
 import login from './login';
-import register from './register';
+import explore from './explore';
 import content from './content';
 import error from './error';
 
@@ -28,7 +28,7 @@ export default {
     orbit,
     contact,
     login,
-    register,
+    explore,
     content,
     error,
   ],

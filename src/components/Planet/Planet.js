@@ -30,9 +30,10 @@ class Planet extends Component {
     };
     let classList = [discovered ? s.planetImageDiscovered :
        s.planetImage];
+    let explorePlanetURI = ['/explore/', name, '/'].join('');
 
     return (<div ref="wrapper" className={s.planetMainWrapper}>
-      <a href="/">
+      <a href={explorePlanetURI}>
         <div className={s.planet}>
           <h2 className={s.planetHeading}>{name}</h2>
           <img ref="planetImage" src={imageSrc} className={classList} style={style}/>
