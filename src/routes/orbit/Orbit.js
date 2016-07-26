@@ -21,25 +21,25 @@ function Orbit(props, context) {
   /* TODO: Data should come from a proper store */
   let planets = [
     {
-      name: 'Cosmodrome',
-      imageSrc: '/images/scorched_earth.png',
+      name: 'Earth',
+      imageSrc: '/images/Earth.png',
       discovered: true,
-      width: 75
+      width: 100
     },
     {
       name: 'Mars',
-      imageSrc: '/images/NaturePatterns05.jpg',
+      imageSrc: '/images/Mars.png',
       discovered: false,
-      width: 60
+      width: 100
     },
     {
-      name: 'Saturn',
-      imageSrc: '/images/NaturePatterns06.jpg',
+      name: 'Venus',
+      imageSrc: '/images/Venus.png',
       discovered: false,
-      width: 95
+      width: 100
     }
   ].map((planet) => {
-    return (<Planet name={planet.name} 
+    return (<Planet key={planet.name} name={planet.name} 
       imageSrc={planet.imageSrc}
       width={planet.width}
       discovered={planet.discovered}/>);
@@ -47,7 +47,7 @@ function Orbit(props, context) {
 
 
   return (
-    <div className={s.root}>
+    <div className={s.orbitRoot}>
       <div>
         <h1>{title}</h1>
         {planets}

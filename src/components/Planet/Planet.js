@@ -20,19 +20,24 @@ class Planet extends Component {
   componentDidMount() {
     let planetImage = this.refs.planetImage;
     preloadImage(planetImage, s.preload);
+
+
   }
   render() {
     let {name, imageSrc, width, discovered} = this.props;
     let style = {
       width: (width || 100) + '%'
     };
-    let classList = [s.planetImage];
+    let classList = [discovered ? s.planetImageDiscovered :
+       s.planetImage];
 
-    return (<div ref="wrapper" className={s.PlanetWrapper}>
-      <div className={s.planet}>
-        <h2 className={s.planetHeading}>{name}</h2>
-        <img ref="planetImage" src={imageSrc} className={classList} style={style}/>
-      </div>
+    return (<div ref="wrapper" className={s.planetMainWrapper}>
+      <a href="/">
+        <div className={s.planet}>
+          <h2 className={s.planetHeading}>{name}</h2>
+          <img ref="planetImage" src={imageSrc} className={classList} style={style}/>
+        </div>
+      </a>
     </div>);
   }
 }

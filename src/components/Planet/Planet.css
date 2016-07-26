@@ -1,8 +1,10 @@
 .planet {
+  position: relative;
   width: 100%;
   max-width: 30rem;
   padding: 2.5%;
-  transition: opacity ease 1s;
+  cursor: pointer;
+  text-align: center;
 }
 
 .planetPreloading {
@@ -14,16 +16,54 @@
 }
 
 .planetHeading {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 0;
+  margin-top: -0.875rem;
+  margin-left: 0.875rem;
+
+  text-align: center;
+  display: block;
+  width: 100%;
+
+  font-family: Abel;
+  font-size: 1.75rem;
+  /*background: red;*/
+
+  text-transform: uppercase;
+  letter-spacing: 1.5rem;
   color: #fff;
 }
 
-.planetImage {
+.planetImage, .planetImageDiscovered {
   margin: 0 auto;
   width: 100%;
   /* TODO: Remove this when you have a proper planet graphic */
   border-radius: 50%;
+  transition: all ease 0.5s;
+}
+
+.planetImage {
+  text-align: center;
+  opacity: .5;
+}
+
+.planet:hover .planetImage {
+  opacity: 1;
+}
+
+.planetImageDiscovered {
+  opacity: 1;
 }
 
 .preload {
   opacity: 0;
+}
+
+@media (min-width: 50rem) {
+  .planetMainWrapper {
+    display: inline-block;
+    width: 33.333%;
+  }
 }

@@ -16,7 +16,6 @@ class CutScene extends Component {
 
     let fade = parseInt(this.props.fadeOutSpeed) || 0;
     setTimeout(() => {
-      console.log('this: ', this);
       window.location.href = this.props.nextUrl;
     }, fade);
   }
