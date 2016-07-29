@@ -1,0 +1,42 @@
+@font-face {
+  font-family: 'Futura';
+  src: url('/fonts/Futura.ttf');
+}
+
+.imageBackground {
+  width: 100%;
+  padding-bottom: 33.333%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+.primaryHeader {
+  position: absolute;
+  bottom: -0.5rem;
+  left: 1rem;
+  font-family: Futura;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  color: #fff;
+  padding-left: 3.5rem;
+}
+.primaryHeader::before {
+  content: '';
+  position: absolute;
+  left: 0rem;
+  top: -0.5rem;
+  display: inline-block;
+  height: 3rem;
+  width: 3rem;
+  background-image: url(/images/DestinySymbol.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.backLink {
+  text-decoration: none;
+  background-color: #000;
+  color: #fff;
+  font-size: 1.25rem;
+  padding: .5rem 1rem 0rem .5rem;
+  font-family: Abel;
+}

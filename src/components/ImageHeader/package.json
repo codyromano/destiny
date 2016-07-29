@@ -1,0 +1,6 @@
+{
+  "name": "ImageHeader",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./ImageHeader.js"
+}
