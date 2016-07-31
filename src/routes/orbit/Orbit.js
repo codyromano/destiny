@@ -48,10 +48,8 @@ function Orbit(props, context) {
 
   return (
     <div className={s.orbitRoot}>
-      <div>
-        <h1>{title}</h1>
+      <div className={s.planetsWrapper}>
         {planets}
-        <p>...</p>
       </div>
     </div>
   );

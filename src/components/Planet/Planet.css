@@ -1,8 +1,10 @@
 .planet {
   position: relative;
+  top: 5rem;
+
   width: 100%;
   max-width: 30rem;
-  padding: 2.5%;
+  padding: 0%;
   cursor: pointer;
   text-align: center;
 }
