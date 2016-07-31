@@ -6,8 +6,9 @@ import Ghost from '../../components/Ghost';
 class Objective extends Component {
   render() {
     let {mainText, subText, active} = this.props;
+    let objClass = active ? s.objectiveActive : s.objective;
 
-    return (<div ref="wrapper" className={s.objective}>
+    return (<div ref="wrapper" className={objClass}>
       <Ghost active={active}/>
       <h2 className={s.mainText}>{mainText}</h2>
       <p className={s.subText}>{subText}</p>

@@ -1,10 +1,13 @@
-.objective {
+.objectiveActive {
   cursor: pointer;
 }
-.objective::after {
+.objective::after, .objectiveActive::after {
   content: '';
   display: table;
   clear: both;
+}
+.objective {
+  color: #666;
 }
 .mainText {
   padding-bottom: 0;
