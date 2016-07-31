@@ -1,0 +1,13 @@
+.objective {
+  cursor: pointer;
+}
+.ghost, .ghostActive {
+  display: block;
+  float: left;
+  height: 3.5rem;
+  width: 7rem;
+  margin-left: -1rem;
+}
+.ghost {
+  opacity: 0.25;
+}
