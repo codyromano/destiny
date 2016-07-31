@@ -12,12 +12,15 @@ class ImageHeader extends Component {
       backgroundImage: `url(${imageSrc})`
     };
 
-    return (<div>
+    return (<header>
       <div className={s.imageBackground} style={imageStyle}>
-        <a href={backLinkHref} className={s.backLink}>{backLinkText}</a>
+        <div className={s.topBar}>
+          <a href={backLinkHref} className={s.backLink}>{backLinkText}</a>
+          <div className={s.glimmer}>1000</div>
+        </div>
         <h1 className={s.primaryHeader}>{title}</h1>
       </div>
-    </div>);
+    </header>);
   }
 }
 
