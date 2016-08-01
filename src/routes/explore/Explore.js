@@ -40,6 +40,7 @@ function Explore(props, context) {
       mainText={obj.mainText}
       subText={obj.subText}
       active={isActive}
+      trackCoords={obj.trackCoords}
       key={i}
     />
   });

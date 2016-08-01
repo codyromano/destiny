@@ -1,6 +1,7 @@
 let AppDispatcher = require('../dispatcher/AppDispatcher');
 let DestinyConstants = require('../constants/DestinyConstants');
 let EventEmitter = require('events').EventEmitter;
+let haversine = require('../haversine.js');
 
 let geo = {
   userCoords: null
@@ -8,9 +9,22 @@ let geo = {
 
 const CHANGE_EVENT = 'change';
 
-let GeoStore = Object.assign({}, EventEmitter.prototype, {
+let DestinyStore = Object.assign({}, EventEmitter.prototype, {
   getAll: function() {
     return Object.assign({}, geo);
+  },
+
+  getDirection: function(coordsA, coordsB) {
+    // Only works for Northern Hemisphere...writing all this
+    // in a hurry because it's a just for fun and I don't have a
+    // lot of time...don't judge me.
+    let latOffset = (coordsA[0] < coordsB[0]) ? 'sorth' : 'south';
+    let lonOffset = (coordsA[1] < coordsB[1]) ? 'west' : 'east';
+    return [latOffset, lonOffset].join('');
+  },
+
+  getDist: function(coordsA, coordsB) {
+    return haversine(coordsA, coordsB);
   },
 
   emitChange: function() {
@@ -38,7 +52,7 @@ function getGeolocation() {
   }
   window.navigator.geolocation.watchPosition(function(pos) {
     geo.userCoords = pos.coords;
-    GeoStore.emitChange();
+    DestinyStore.emitChange();
   });
 }
 
@@ -50,4 +64,4 @@ AppDispatcher.register(function(action) {
   }
 });
 
-module.exports = GeoStore;
+module.exports = DestinyStore;

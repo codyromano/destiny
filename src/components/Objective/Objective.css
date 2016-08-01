@@ -5,15 +5,18 @@
   content: '';
   display: table;
   clear: both;
+  height: 1rem;
 }
 .objective {
   color: #666;
 }
 .mainText {
+  font-size: 1.5rem;
   padding-bottom: 0;
   margin-bottom: 0;
 }
 .subText {
   padding-top: 0;
   margin-top: 0;
+  padding-bottom: 0;
 }
