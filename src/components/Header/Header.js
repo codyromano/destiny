@@ -15,7 +15,6 @@ import Navigation from '../Navigation';
 import logoUrl from './logo.jpg';
 
 function Header() {
-
   return (
     <div className={s.root}>
       <div className={s.container}>
@@ -25,8 +24,6 @@ function Header() {
       </div>
     </div>
   );
-
-  //return (<div className={s.root}></div>);
 }
 
 export default withStyles(s)(Header);

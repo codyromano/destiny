@@ -9,6 +9,10 @@ let geo = {
 const CHANGE_EVENT = 'change';
 
 let GeoStore = Object.assign({}, EventEmitter.prototype, {
+  getAll: function() {
+    return Object.assign({}, geo);
+  },
+
   emitChange: function() {
     this.emit(CHANGE_EVENT);
   },
@@ -26,10 +30,22 @@ let GeoStore = Object.assign({}, EventEmitter.prototype, {
   }
 });
 
+function getGeolocation() {
+  let browserSupport = (window.navigator && window.navigator.geolocation);
+  if (!browserSupport) {
+    // TODO: Emit geolocation failed event
+    return false;
+  }
+  window.navigator.geolocation.watchPosition(function(pos) {
+    geo.userCoords = pos.coords;
+    GeoStore.emitChange();
+  });
+}
+
 AppDispatcher.register(function(action) {
   switch(action.actionType) {
     case DestinyConstants.GEOLOCATION_GET:
-      console.log('gelocationget called');
+      getGeolocation();
     break;
   }
 });

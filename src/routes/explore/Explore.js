@@ -36,8 +36,6 @@ function Explore(props, context) {
       isActive = (obj.id === currentObj.id);
     }
 
-    console.log(isActive);
-
     return <Objective
       mainText={obj.mainText}
       subText={obj.subText}
