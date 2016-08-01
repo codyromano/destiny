@@ -6,9 +6,25 @@ let geo = {
   userCoords: null
 };
 
-let GeoStore = Object.assign({}, EventEmitter.prototype, {
-});
+const CHANGE_EVENT = 'change';
 
+let GeoStore = Object.assign({}, EventEmitter.prototype, {
+  emitChange: function() {
+    this.emit(CHANGE_EVENT);
+  },
+  /**
+   * @param {function} callback
+   */
+  addChangeListener: function(callback) {
+    this.on(CHANGE_EVENT, callback);
+  },
+  /**
+   * @param {function} callback
+   */
+  removeChangeListener: function(callback) {
+    this.removeListener(CHANGE_EVENT, callback);
+  }
+});
 
 AppDispatcher.register(function(action) {
   switch(action.actionType) {
