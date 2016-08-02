@@ -20,7 +20,9 @@ class Objective extends Component {
 
     let enableGPSButton = this.refs.enableGPS;
     if (enableGPSButton) {
-      enableGPSButton.addEventListener('click', () => {
+      enableGPSButton.addEventListener('click', (ev) => {
+        this.refs.enableGPSWrapper.classList.add(s.geolocating);
+        ev.target.innerHTML = '';
         DestinyActions.getGeolocation();
       }, false);
     }
@@ -35,22 +37,39 @@ class Objective extends Component {
   }
 
   render() {
+    let _this = this;
     let {mainText, subText, active} = this.props;
     let objClass = active ? s.objectiveActive : s.objective;
 
     // TODO: Make tracker a standalone component
     let loc = this.state.userCoords, text, enableGPSButton;
-    if (!loc) {
-      enableGPSButton = (<button ref="enableGPS">Track Objective</button>)
+    if (!loc && active) {
+      enableGPSButton = (<div ref="enableGPSWrapper" className={s.enableGPSWrapper}>
+        <button id="enableGPS" ref="enableGPS">Track</button>
+      </div>);
     }
 
+    mainText = active ? mainText : 'Locked';
+    subText = active ? subText : `Complete previous
+      objectives to unlock this`;
+
     return (<div ref="wrapper" className={objClass}>
-      <Ghost active={active}/>
-      <h2 className={s.mainText}>{mainText}</h2>
-      <p className={s.subText}>{subText}</p>
-      <Tracker tracking={active} trackCoords={this.props.trackCoords}
-      userCoords={this.state.userCoords}/>
-      {enableGPSButton}
+      <div className={s.objectiveInnerWrapper}>
+        <div className={s.objectiveElement}>
+          <Ghost active={active}/>
+        </div>
+
+        <div className={s.objectiveElement}>
+          <h2 className={s.mainText}>{mainText}</h2>
+          <p className={s.subText}>{subText}</p>
+        </div>
+
+        <div className={s.objectiveElement}>
+          {enableGPSButton}
+          <Tracker tracking={active} trackCoords={this.props.trackCoords}
+          userCoords={this.state.userCoords}/>
+        </div>
+      </div>
     </div>);
   }
 }

@@ -2,12 +2,26 @@
   cursor: pointer;
 }
 .ghost, .ghostActive {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  padding-bottom: 100%;
+}
+.ghost {
+  background-image: url(/images/ghost-thumb.jpg);
+}
+.ghostActive {
+  background-image: url(/images/ghost.gif);
+}
+/*
+.ghost, .ghostActive {
   display: block;
   float: left;
-  height: 3.5rem;
-  width: 7rem;
+  width: 100%;
   margin-left: -1rem;
 }
+*/
 .ghost {
   opacity: 0.25;
 }

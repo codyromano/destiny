@@ -49,6 +49,7 @@ function Explore(props, context) {
     <div className={s.root}>
       <div className={s.container}>
         <ImageHeader backLinkHref={backLinkHref} backLinkText={backLinkText} imageSrc={props.headerImageSrc} title={props.planetName}/>
+        <h2 className={s.objectivesHeading}>Objectives</h2>
         {objectives}
       </div>
     </div>

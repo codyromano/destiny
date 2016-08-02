@@ -9,14 +9,79 @@
 }
 .objective {
   color: #666;
+
 }
 .mainText {
   font-size: 1.5rem;
   padding-bottom: 0;
   margin-bottom: 0;
+  margin-top: 0;
 }
 .subText {
   padding-top: 0;
   margin-top: 0;
   padding-bottom: 0;
+}
+.objectiveElement {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  margin: 0;
+  vertical-align: top;
+}
+.objectiveElement:nth-of-type(1) {
+  width: 15%;
+  max-width: 5rem;
+  padding-right: .5rem;
+}
+.objectiveElement:nth-of-type(2) {
+  width: 55%;
+  min-width: 16rem;
+  max-width: 25rem;
+}
+.objectiveElement:nth-of-type(3) {
+  width: 20%;
+  text-align: left;
+}
+
+.objectiveElement, .enableGPSWrapper {
+  display: inline-block;
+}
+.enableGPSWrapper {
+  position: relative;
+  height: 100%;
+  top: 2rem;
+  width: 3rem;
+}
+.enableGPSWrapper::before {
+  content: '';
+  opacity: 0.5;
+  background: url(https://cdn4.iconfinder.com/data/icons/pictype-free-vector-icons/16/location-alt-256.png) no-repeat center;
+  background-size: cover;
+  width: 2rem;
+  height: 2rem;
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  top: -2rem;
+  margin-left: -1rem;
+}
+.enableGPSWrapper.geolocating::before {
+  background-image: url(https://www.tangeroutlet.com/images/ipad-map/WIFI-Icon.gif);
+}
+.enableGPSWrapper button {
+  vertical-align: middle;
+  font-family: Abel;
+  font-size: 1rem;
+  font-weight: bold;
+  position: relative;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: transparent;
+  outline: 0;
+  border: none;
+  cursor: pointer;
+  color: #2c3e50;
+}
+.enableGPSWrapper button:hover {
 }
