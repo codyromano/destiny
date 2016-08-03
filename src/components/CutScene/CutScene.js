@@ -6,6 +6,18 @@ class CutScene extends Component {
   componentDidMount() {
     let video = this.refs.cutSceneVideo;
     video.classList.add(s.playing);
+
+    this.refs.wrapper.addEventListener('click',
+      this.skipScene.bind(this), false);
+  }
+
+  componentWillUnmount() {
+    this.refs.wrapper.removeEventListener('click',
+      this.skipScene.bind(this));
+  }
+
+  skipScene() {
+    window.location.href = this.props.nextUrl;
   }
 
   play() {
