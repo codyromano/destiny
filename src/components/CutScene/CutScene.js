@@ -3,6 +3,11 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './CutScene.css';
 
 class CutScene extends Component {
+  componentDidMount() {
+    let video = this.refs.cutSceneVideo;
+    video.classList.add(s.playing);
+  }
+
   play() {
     let video = this.refs.cutSceneVideo;
 
