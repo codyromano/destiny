@@ -19,10 +19,12 @@ class Objective extends Component {
     DestinyStore.addChangeListener(() => this.onStoreChange());
 
     let enableGPSButton = this.refs.enableGPS;
+    let enableGPSWrapper = this.refs.enableGPSWrapper;
+
     if (enableGPSButton) {
-      enableGPSButton.addEventListener('click', (ev) => {
-        this.refs.enableGPSWrapper.classList.add(s.geolocating);
-        ev.target.innerHTML = '';
+      enableGPSWrapper.addEventListener('click', (ev) => {
+        enableGPSWrapper.classList.add(s.geolocating);
+        enableGPSButton.innerHTML = '';
         DestinyActions.getGeolocation();
       }, false);
     }
