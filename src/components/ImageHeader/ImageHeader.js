@@ -6,8 +6,7 @@ class ImageHeader extends Component {
   render() {
     let {backLinkHref, backLinkText, title} = this.props;
 
-    // TODO: Remove hardcoded test URL
-    let imageSrc = `/images/Explore_Earth.jpg`;
+    let imageSrc = this.props.imageSrc;
     let imageStyle = {
       backgroundImage: `url(${imageSrc})`
     };

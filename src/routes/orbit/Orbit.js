@@ -11,34 +11,14 @@ import React, { PropTypes } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Orbit.css';
 import Planet from '../../components/Planet';
-//import CutScene from '../../components/CutScene';
+import DestinyStore from '../../stores/DestinyStore';
 
 const title = 'Orbit';
 
 function Orbit(props, context) {
   context.setTitle(title);
   
-  /* TODO: Data should come from a proper store */
-  let planets = [
-    {
-      name: 'Earth',
-      imageSrc: '/images/Earth.png',
-      discovered: true,
-      width: 100
-    },
-    {
-      name: 'Mars',
-      imageSrc: '/images/Mars.png',
-      discovered: false,
-      width: 100
-    },
-    {
-      name: 'Venus',
-      imageSrc: '/images/Venus.png',
-      discovered: false,
-      width: 100
-    }
-  ].map((planet) => {
+  let planets = DestinyStore.getPlanets().map((planet) => {
     return (<Planet key={planet.name} name={planet.name} 
       imageSrc={planet.imageSrc}
       width={planet.width}

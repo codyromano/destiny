@@ -14,6 +14,38 @@ let DestinyStore = Object.assign({}, EventEmitter.prototype, {
     return Object.assign({}, geo);
   },
 
+  getPlanets: function(planetName) {
+    let planets = [{
+      name: 'Earth',
+      imageSrc: '/images/Earth.png',
+      headerImageSrc: '/images/Explore_Earth.jpg',
+      discovered: true,
+      width: 100
+    },
+    {
+      name: 'Mars',
+      imageSrc: '/images/Mars.png',
+      headerImageSrc: '/images/Explore_Mars.jpg',
+      discovered: false,
+      width: 100
+    },
+    {
+      name: 'Venus',
+      imageSrc: '/images/Venus.png',
+      headerImageSrc: '/images/Explore_Venus.jpg',
+      discovered: false,
+      width: 100
+    }];
+
+    if (planetName) {
+      let search = planets.filter((planet) => {
+        return planet.name === planetName;
+      });
+      return search.length ? search[0] : null;
+    }
+    return planets;
+  },
+
   getDirection: function(coordsA, coordsB) {
     // Only works for Northern Hemisphere...writing all this
     // in a hurry because it's a just for fun and I don't have a
