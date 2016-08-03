@@ -12,6 +12,7 @@ import App from '../components/App';
 
 // Child routes
 import home from './home';
+import travel from './travel';
 import orbit from './orbit';
 import contact from './contact';
 import login from './login';
@@ -25,6 +26,7 @@ export default {
 
   children: [
     home,
+    travel,
     orbit,
     contact,
     login,
