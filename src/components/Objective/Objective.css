@@ -9,7 +9,6 @@
 }
 .objective {
   color: #666;
-
 }
 .mainText {
   font-size: 1.5rem;
@@ -39,8 +38,17 @@
   max-width: 25rem;
 }
 .objectiveElement:nth-of-type(3) {
-  width: 20%;
+  width: 15%;
+  box-sizing: border-box;
   text-align: left;
+}
+
+@media (max-width: 30rem) {
+  .objectiveElement:nth-of-type(3) {
+    display: block;
+    padding-left: 3.5rem;
+    width: 50%;
+  }
 }
 
 .objectiveElement, .enableGPSWrapper {

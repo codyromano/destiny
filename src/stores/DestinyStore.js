@@ -134,7 +134,6 @@ function getGeolocation() {
   }
   window.navigator.geolocation.watchPosition(function(pos) {
     geo.userCoords = pos.coords;
-    console.log(pos.coords);
     DestinyStore.emitChange();
   });
 }

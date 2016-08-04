@@ -36,7 +36,14 @@ class Tracker extends Component {
     let {milesAway, direction} = this.state;
     let content = (<div></div>);
 
-    if (milesAway !== null && this.props.tracking) {
+    let isNumber = (n) => !isNaN(parseInt(n));
+
+    console.log(milesAway);
+
+    if (this.props.tracking && isNumber(milesAway) && milesAway < 0.05) {
+      content = (<button className={s.checkIn}>Check In</button>);
+
+    } else if (milesAway !== null && this.props.tracking) {
       content = (<div className={s.tracker}>
         <strong className={s.milesAway}>{milesAway}mi</strong><span className={s.direction}>{direction}</span></div>);
     }
