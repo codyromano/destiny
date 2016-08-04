@@ -46,6 +46,36 @@ let DestinyStore = Object.assign({}, EventEmitter.prototype, {
     return planets;
   },
 
+  getObjectives: function() {
+    let objectives = [
+      {
+        id: 'Earth-1',
+        mainText: 'Go to the spa',
+        subText: 'Visit the spa with Amanda and Malissa.',
+        planet: 'Earth',
+        completed: false,
+        trackCoords: [47.617326, -122.330787]
+      },
+      {
+        id: 'Earth-2',
+        mainText: 'Go to the movies',
+        subText: 'Visit the movies with blah blah',
+        planet: 'Earth',
+        completed: false,
+        trackCoords: [47.617326, -122.330787]
+      },
+      {
+        id: 'Earth-3',
+        mainText: 'Go to the spa',
+        subText: 'Visit the spa with Amanda and Malissa.',
+        planet: 'Earth',
+        completed: false,
+        trackCoords: [47.617326, -122.330787]
+      }
+    ];
+    return objectives;
+  },
+
   getDirection: function(coordsA, coordsB) {
     // Only works for Northern Hemisphere...writing all this
     // in a hurry because it's a just for fun and I don't have a
