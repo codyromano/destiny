@@ -40,10 +40,10 @@ class Objective extends Component {
 
   render() {
     let _this = this;
-    let {id, mainText, subText, active} = this.props;
+    let {id, mainText, subText, active, completed} = this.props;
     let objClass = active ? s.objectiveActive : s.objective;
 
-    // TODO: Make tracker a standalone component
+    // TODO: Make enable GPS button a standalone component
     let loc = this.state.userCoords, text, enableGPSButton;
     if (!loc && active) {
       enableGPSButton = (<div ref="enableGPSWrapper" className={s.enableGPSWrapper}>
@@ -51,9 +51,12 @@ class Objective extends Component {
       </div>);
     }
 
-    mainText = active ? mainText : 'Locked';
-    subText = active ? subText : `Complete previous
-      objectives to unlock this`;
+    if (completed) {
+      mainText = 'Completed';
+    } else if (!active) {
+      mainText = 'Locked';
+      subText = `Complete previous objective to unlock this`;
+    }
 
     return (<div ref="wrapper" className={objClass}>
       <div className={s.objectiveInnerWrapper}>
