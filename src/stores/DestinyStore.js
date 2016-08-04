@@ -50,7 +50,7 @@ let DestinyStore = Object.assign({}, EventEmitter.prototype, {
     // Only works for Northern Hemisphere...writing all this
     // in a hurry because it's a just for fun and I don't have a
     // lot of time...don't judge me.
-    let latOffset = (coordsA[0] < coordsB[0]) ? 'sorth' : 'south';
+    let latOffset = (coordsA[0] < coordsB[0]) ? 'south' : 'south';
     let lonOffset = (coordsA[1] < coordsB[1]) ? 'west' : 'east';
     return [latOffset, lonOffset].join('');
   },
