@@ -40,7 +40,7 @@ class Objective extends Component {
 
   render() {
     let _this = this;
-    let {mainText, subText, active} = this.props;
+    let {id, mainText, subText, active} = this.props;
     let objClass = active ? s.objectiveActive : s.objective;
 
     // TODO: Make tracker a standalone component
@@ -68,8 +68,10 @@ class Objective extends Component {
 
         <div className={s.objectiveElement}>
           {enableGPSButton}
-          <Tracker tracking={active} trackCoords={this.props.trackCoords}
-          userCoords={this.state.userCoords}/>
+          <Tracker objectiveId={id} 
+            tracking={active}
+            trackCoords={this.props.trackCoords}
+            userCoords={this.state.userCoords}/>
         </div>
       </div>
     </div>);

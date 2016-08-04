@@ -6,6 +6,12 @@ let DestinyActions = {
     AppDispatcher.dispatch({
       actionType: DestinyConstants.GEOLOCATION_GET
     });
+  },
+  checkIn(objectiveId) {
+    AppDispatcher.dispatch({
+      actionType: DestinyConstants.OBJECTIVE_CHECKIN,
+      objectiveId: objectiveId
+    });
   }
 };
 

@@ -37,6 +37,7 @@ function Explore(props, context) {
     }
 
     return <Objective
+      id={obj.id}
       mainText={obj.mainText}
       subText={obj.subText}
       active={isActive}

@@ -126,6 +126,17 @@ let DestinyStore = Object.assign({}, EventEmitter.prototype, {
   }
 });
 
+function checkIn(objectiveId) {
+  for (let objective of objectives) {
+    if (objective.id === objectiveId) {
+      objective.completed = true;
+      break;
+    }
+  }
+  console.log(objectives);
+  DestinyStore.emitChange();
+}
+
 function getGeolocation() {
   let browserSupport = (window.navigator && window.navigator.geolocation);
   if (!browserSupport) {
@@ -150,6 +161,12 @@ AppDispatcher.register(function(action) {
   switch(action.actionType) {
     case DestinyConstants.GEOLOCATION_GET:
       getGeolocation();
+    break;
+    case DestinyConstants.OBJECTIVE_CHECKIN:
+      checkIn(action.objectiveId);
+    break;
+    default:
+      console.warn(`Unrecognized action: ${action.actionType}`);
     break;
   }
 });
