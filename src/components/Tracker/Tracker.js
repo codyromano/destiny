@@ -22,8 +22,8 @@ class Tracker extends Component {
       ).toFixed(2);
 
       let direction = DestinyStore.getDirection(
-        userCoords,
-        this.props.trackCoords
+        this.props.trackCoords,
+        userCoords
       );
 
       this.setState({
