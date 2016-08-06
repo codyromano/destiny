@@ -12,6 +12,7 @@ import App from '../components/App';
 
 // Child routes
 import home from './home';
+import game from './game';
 import travel from './travel';
 import orbit from './orbit';
 import explore from './explore';
@@ -23,6 +24,7 @@ export default {
 
   children: [
     home,
+    game,
     travel,
     orbit,
     explore,

@@ -18,7 +18,7 @@ const title = 'Destiny';
 function Home({}, context) {
   return (
     <div className={s.root}>
-      <CutScene fadeOutSpeed="500" nextUrl="/orbit/" videoSrc="intro-edited.mp4"/>
+      <CutScene fadeOutSpeed="500" nextUrl="/game/" videoSrc="intro-edited.mp4"/>
       <div className={s.container}></div>
     </div>
   );
