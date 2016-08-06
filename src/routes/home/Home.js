@@ -15,21 +15,7 @@ import s from './Home.css';
 
 const title = 'Destiny';
 
-function Home({ news }, context) {
-  context.setTitle(title);
-  /*
-          <ul className={s.news}>
-          {news.map((item, index) => (
-            <li key={index} className={s.newsItem}>
-              <a href={item.link} className={s.newsTitle}>{item.title}</a>
-              <span
-                className={s.newsDesc}
-                dangerouslySetInnerHTML={{ __html: item.contentSnippet }}
-              />
-            </li>
-          ))}
-        </ul>
-  */
+function Home({}, context) {
   return (
     <div className={s.root}>
       <CutScene fadeOutSpeed="500" nextUrl="/orbit/" videoSrc="intro-edited.mp4"/>
@@ -37,14 +23,5 @@ function Home({ news }, context) {
     </div>
   );
 }
-
-Home.propTypes = {
-  news: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    link: PropTypes.string.isRequired,
-    contentSnippet: PropTypes.string,
-  })).isRequired,
-};
-Home.contextTypes = { setTitle: PropTypes.func.isRequired };
 
 export default withStyles(s)(Home);
