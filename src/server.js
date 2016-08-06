@@ -29,6 +29,8 @@ import routes from './routes';
 import assets from './assets'; // eslint-disable-line import/no-unresolved
 import { port, auth } from './config';
 
+let generateUniqueId = require('./generateUniqueId.js');
+
 const app = express();
 
 //
@@ -68,6 +70,10 @@ app.get('/login/facebook/return',
     res.redirect('/');
   }
 );
+
+app.get('/session', (req, res) => {
+  res.send(generateUniqueId());
+});
 
 //
 // Register API middleware

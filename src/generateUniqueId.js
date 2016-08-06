@@ -3,11 +3,12 @@
 * @desc Create a memorable user Id out of English 
 * words based on the current timestamp
 */
-
+var path = require('path');
 var fs = require('fs');
 
+var fileName = path.resolve(__dirname, 'data/commonWords.txt');
 // 1,000 most common English words
-var words = fs.readFileSync('commonWords.txt').toString().split("\n");
+var words = fs.readFileSync(fileName).toString().split("\n");
 
 function capitalize(string) {
   return string[0].toUpperCase() + string.slice(1);
@@ -20,7 +21,7 @@ function splitNumberIntoChunks(number, digitsPerChunk) {
   return (captures === null) ? [] : captures.map(parseFloat);
 }
 
-function getUniqueId() {
+function generateUniqueId() {
   var result = [],
       digitGroups = splitNumberIntoChunks(new Date().getTime(), 3);
 
@@ -33,4 +34,4 @@ function getUniqueId() {
   return result.map(capitalize).join('');
 }
 
-module.exports = getUniqueId();
+module.exports = generateUniqueId;

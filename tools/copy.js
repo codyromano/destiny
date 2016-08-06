@@ -22,6 +22,7 @@ async function copy({ watch } = {}) {
   await Promise.all([
     ncp('src/public', 'build/public'),
     ncp('src/content', 'build/content'),
+    ncp('src/data', 'build/data')
   ]);
 
   await fs.writeFile('./build/package.json', JSON.stringify({
