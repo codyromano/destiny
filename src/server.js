@@ -36,9 +36,30 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.get('/session', (req, res) => {
-  res.send(generateUniqueId());
+// TODO: This should be POST because it's creating a resource
+app.get('/session/create', (req, res) => {
+  const oneHundredDays = 1000 * 60 * 60 * 24 * 100;
+
+  let id = generateUniqueId();
+  res.cookie('userSessionId', id, {maxAge: oneHundredDays});
+
+  let response = JSON.stringify({userSessionId: id});
+
+  // TODO: JSON header
+  res.send(response);
 });
+
+app.get('/session/fetch', (req, res) => {
+  let id = req.cookies.userSessionId;
+
+  let response = {
+    sessionActive: id ? true : false,
+    userSessionId: id ? id : null
+  };
+
+  res.send(JSON.stringify(response));
+});
+
 
 //
 // Register server-side rendering middleware

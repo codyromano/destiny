@@ -14,10 +14,7 @@ import App from '../components/App';
 import home from './home';
 import travel from './travel';
 import orbit from './orbit';
-import contact from './contact';
-import login from './login';
 import explore from './explore';
-import content from './content';
 import error from './error';
 
 export default {
@@ -28,10 +25,7 @@ export default {
     home,
     travel,
     orbit,
-    contact,
-    login,
     explore,
-    content,
     error,
   ],
 
