@@ -40,13 +40,15 @@ app.use(bodyParser.json());
 app.get('/session/create', (req, res) => {
   const oneHundredDays = 1000 * 60 * 60 * 24 * 100;
 
-  let id = generateUniqueId();
+  let removeApos = new RegExp("'","g");
+  let id = generateUniqueId().replace(removeApos, '');
   res.cookie('userSessionId', id, {maxAge: oneHundredDays});
 
   let response = JSON.stringify({userSessionId: id});
 
   // TODO: JSON header
-  res.send(response);
+  res.send("example.com/" + id);
+  //res.send(response);
 });
 
 app.get('/session/fetch', (req, res) => {
@@ -56,8 +58,8 @@ app.get('/session/fetch', (req, res) => {
     sessionActive: id ? true : false,
     userSessionId: id ? id : null
   };
-
-  res.send(JSON.stringify(response));
+  res.send("example.com/" + id);
+  //res.send(JSON.stringify(response));
 });
 
 
