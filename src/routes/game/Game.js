@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Game.css';
 import DestinyStore from '../../stores/DestinyStore';
+import Ajax from '../../ajax';
 
 const title = 'Game';
 
@@ -23,8 +24,13 @@ class Game extends Component {
     this.setState(DestinyStore.getAll());
   }
 
-  startNewGame() {
-    window.location.href = '/orbit/';
+  onStartNewGameError() {
+    // Display error
+  }
+
+  async startNewGame() {
+    let gameId = await Ajax.get('/session/create')
+    window.location.href = '/orbit';
   }
 
   loadSavedGame() {
@@ -32,7 +38,6 @@ class Game extends Component {
   }
 
   gameActionSelected(optionText) {
-    console.log(optionText);
     this.setState({
       selectedAction: optionText
     });
