@@ -5,7 +5,6 @@
   width: 100%;
   max-width: 30rem;
   padding: 0%;
-  cursor: pointer;
   text-align: center;
 }
 
@@ -13,11 +12,9 @@
   opacity: 0;
 }
 
-.discovered {
-
-}
-
 .planetHeading {
+  pointer-events: none;
+  
   position: absolute;
   z-index: 1;
   top: 50%;
@@ -55,8 +52,8 @@
   opacity: 1;
 }
 
-.planetImageDiscovered {
-
+.planetImageDiscovered, .planetImageDiscovered .planetHeading {
+  cursor: pointer;
 }
 
 .preload {
