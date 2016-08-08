@@ -3,13 +3,18 @@ let DestinyConstants = require('../constants/DestinyConstants');
 let EventEmitter = require('events').EventEmitter;
 let haversine = require('../haversine.js');
 
+// TODO: Use consistent import pattern
+import LocalStore from '../localStore';
+
+let localStore = new LocalStore('destiny');
+
 let geo = {
   userCoords: null
 };
 
 const CHANGE_EVENT = 'change';
 
-let objectives = [
+let objectives = getStoredObjectives() || [
   {
     id: 'Earth-1',
     mainText: 'Go to the spa',
@@ -35,6 +40,25 @@ let objectives = [
     trackCoords: [47.617326, -122.330787]
   }
 ];
+
+function getStoredObjectives() {
+  let stored = localStore.get('objectives');
+
+  if (stored === null) {
+    return null;
+  }
+
+  stored = stored.map((obj) => {
+    // Convert string to boolean
+    obj.completed = !!obj.completed;
+    obj.trackCoords = obj.trackCoords.map(parseFloat);
+    return obj;
+  });
+
+  return stored;
+}
+
+getStoredObjectives();
 
 let DestinyStore = Object.assign({}, EventEmitter.prototype, {
   getAll: function() {
@@ -133,7 +157,7 @@ function checkIn(objectiveId) {
       break;
     }
   }
-  console.log(objectives);
+  localStore.save('objectives', objectives);
   DestinyStore.emitChange();
 }
 

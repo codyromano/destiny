@@ -26,6 +26,7 @@
     "isomorphic-style-loader": "1.0.0",
     "jsonwebtoken": "7.0.0",
     "keymirror": "^0.1.1",
+    "localStorage": "^1.0.3",
     "markdown-it": "6.0.5",
     "node-fetch": "1.5.3",
     "normalize.css": "4.1.1",
