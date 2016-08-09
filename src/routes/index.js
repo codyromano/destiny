@@ -16,6 +16,7 @@ import game from './game';
 import travel from './travel';
 import orbit from './orbit';
 import explore from './explore';
+import rewards from './rewards';
 import error from './error';
 
 export default {
@@ -26,6 +27,7 @@ export default {
     home,
     game,
     travel,
+    rewards,
     orbit,
     explore,
     error,

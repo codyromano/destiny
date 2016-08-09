@@ -15,14 +15,27 @@ class Explore extends Component {
     super();
     this.props = props;
     this.context = context;
+    this.state = {
+      objectives: []
+    };
   }
 
   componentDidMount() {
     DestinyStore.addChangeListener(() => this.onStoreChange());
   }
 
+  checkCompletion() {
+    let completed = this.state.objectives.filter((obj) => { return obj.completed});
+    if (completed.length === this.props.objectives.length) {
+      window.location.href = '/rewards/';
+    }
+  }
+
   onStoreChange() {
-    this.setState(DestinyStore.getObjectives());
+    this.setState({
+      objectives: DestinyStore.getObjectives()
+    });
+    this.checkCompletion();
   }
 
   getCurrentObjective(objectives) {

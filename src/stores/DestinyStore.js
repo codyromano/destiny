@@ -38,8 +38,46 @@ let objectives = getStoredObjectives() || [
     planet: 'Earth',
     completed: false,
     trackCoords: [47.617326, -122.330787]
+  },
+  {
+    id: 'Mars-1',
+    mainText: 'Go to the spa',
+    subText: 'Visit the spa with Amanda and Malissa.',
+    planet: 'Mars',
+    completed: false,
+    trackCoords: [47.617326, -122.330787]
+  },
+  {
+    id: 'Venus-1',
+    mainText: 'Go to the spa',
+    subText: 'Visit the spa with Amanda and Malissa.',
+    planet: 'Venus',
+    completed: false,
+    trackCoords: [47.617326, -122.330787]
   }
 ];
+
+var planets = getStoredPlanets() || [{
+  name: 'Earth',
+  imageSrc: '/images/Earth.png',
+  headerImageSrc: '/images/Explore_Earth.jpg',
+  discovered: true,
+  width: 100
+},
+{
+  name: 'Mars',
+  imageSrc: '/images/Mars.png',
+  headerImageSrc: '/images/Explore_Mars.jpg',
+  discovered: false,
+  width: 100
+},
+{
+  name: 'Venus',
+  imageSrc: '/images/Venus.png',
+  headerImageSrc: '/images/Explore_Venus.jpg',
+  discovered: false,
+  width: 100
+}];
 
 function getStoredObjectives() {
   let stored = localStore.get('objectives');
@@ -58,6 +96,19 @@ function getStoredObjectives() {
   return stored;
 }
 
+function getStoredPlanets() {
+  let stored = localStore.get('planets');
+  if (stored === null) {
+    return null;
+  }
+  stored = stored.map((planet) => {
+    planet.discovered = !!planet.discovered;
+    planet.width = parseFloat(planet.width);
+    return planet;
+  });
+  return stored;
+}
+
 getStoredObjectives();
 
 let DestinyStore = Object.assign({}, EventEmitter.prototype, {
@@ -66,28 +117,6 @@ let DestinyStore = Object.assign({}, EventEmitter.prototype, {
   },
 
   getPlanets: function(planetName) {
-    let planets = [{
-      name: 'Earth',
-      imageSrc: '/images/Earth.png',
-      headerImageSrc: '/images/Explore_Earth.jpg',
-      discovered: true,
-      width: 100
-    },
-    {
-      name: 'Mars',
-      imageSrc: '/images/Mars.png',
-      headerImageSrc: '/images/Explore_Mars.jpg',
-      discovered: false,
-      width: 100
-    },
-    {
-      name: 'Venus',
-      imageSrc: '/images/Venus.png',
-      headerImageSrc: '/images/Explore_Venus.jpg',
-      discovered: false,
-      width: 100
-    }];
-
     if (planetName) {
       let search = planets.filter((planet) => {
         return planet.name === planetName;
@@ -150,6 +179,48 @@ let DestinyStore = Object.assign({}, EventEmitter.prototype, {
   }
 });
 
+function planetComplete(planetName, objectives) {
+  objectives = objectives.filter((obj) => obj.planetName === planetName);
+  let completed = objectives.filter((obj) => obj.completed);
+
+  return objectives.length === completed.length;
+}
+
+function updatePlanets() {
+  // Planet name => completion status
+  let planetsCompletionMap = planets.reduce((map, planet) => {
+    map[planet.name] = true;
+    return map;
+  }, {});
+
+  /* If any of the objectives associated with a planet are
+  incomplete, the following planet should not be available. */ 
+  objectives.forEach((obj) => {
+    if (!obj.completed) {
+      planetsCompletionMap[obj.planet] = false;
+    }
+  });
+
+  console.log(`planetsCompletionMap: ${planetsCompletionMap}`);
+
+  planets = planets.map((p, index) => {
+    let next = planets[index + 1];
+    let isComplete = planetsCompletionMap[p.name];
+
+    /* If all the objectives for this planet are complete and a next
+    planet exists, mark the next one as discovered. */
+    if (isComplete && next) {
+      planets[index + 1].discovered = true;
+    }
+    return p;
+  });
+
+  console.log(`planets: ${planets}`);
+
+  localStore.save('planets', planets);
+  return planets;
+}
+
 function checkIn(objectiveId) {
   for (let objective of objectives) {
     if (objective.id === objectiveId) {
@@ -157,7 +228,9 @@ function checkIn(objectiveId) {
       break;
     }
   }
+
   localStore.save('objectives', objectives);
+  updatePlanets();
   DestinyStore.emitChange();
 }
 
