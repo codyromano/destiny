@@ -1,0 +1,121 @@
+/**
+ * React Starter Kit (https://www.reactstarterkit.com/)
+ *
+ * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE.txt file in the root directory of this source tree.
+ */
+
+@import '../../components/variables.css';
+
+@font-face {
+  font-family: 'Futura';
+  src: url('/fonts/Futura.ttf');
+}
+
+body, html {
+  background: url(/images/rewards-bg.jpg) no-repeat #000;
+  background-size: 100% auto;
+  color: #fff;
+}
+
+.rewardsHeader {
+  display: block;
+  position: relative;
+  width: 100%;
+  font-size: 2rem;
+  font-family: Futura;
+  text-transform: uppercase;
+  font-weight: 400;
+  padding: 0 1rem 0.25rem 5%;
+  border-bottom: solid #fff 0.15rem;
+}
+
+.rewardsHeader::after {
+  position: absolute;
+  bottom: -0.75rem;
+  left: 0;
+
+  content: '';
+  display: block;
+  width: 100%;
+  height: 0.30rem;
+  background-color: #fff;
+  padding: 0 0.75rem;
+}
+
+@media (max-width: 50rem) {
+  .rewardsHeader {
+    font-size: 1.5rem;
+  }
+}
+
+.rewardsHeader span:first-of-type {
+  letter-spacing: -0.25em;
+  padding-right: 0.75em;
+}
+
+.unlockedWrapper {
+  background-color: #2980b9;
+  border: solid #fff 0.25rem;
+  max-width: 15rem;
+  width: 95%;
+  margin: 0 auto;
+  animation: spin 3s 1;
+}
+.container .continueWrapper:first-of-type {
+  padding-top: 0;
+}
+
+.continueWrapper {
+  padding-top: 1rem;
+  font-size: 1.5rem;
+  text-align: center;
+  opacity: 0;
+  transition: opacity ease 1s;
+}
+.continueWrapper.visible {
+  opacity: 1;
+}
+.countdown {
+  font-weight: bold;
+}
+
+h2 {
+  padding: 0 0 0.5rem 0;
+  margin: 0;
+}
+
+@keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg) scale(1.5);
+    -webkit-transform: rotate(0deg) scale(1.5);
+    -ms-transform: rotate(0deg) scale(1.5);
+    transform: rotate(0deg) scale(1.5);
+    background-color: #000;
+    opacity: 0.10;
+  }
+
+  80% {
+    background-color: #000;
+
+  }
+  100% {
+    opacity: 1;
+    background-color: #2980b9;
+    -moz-transform: rotate(360deg) scale(1);
+    -webkit-transform: rotate(360deg) scale(1);
+    -ms-transform: rotate(360deg) scale(1);
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+.planet {
+  width: 100%;
+}
+
+.container {
+  margin: 0 auto;
+  width: 100%;
+}
