@@ -16,6 +16,7 @@ class Explore extends Component {
     this.props = props;
     this.context = context;
     this.state = {
+      planets: [],
       objectives: []
     };
   }
@@ -24,15 +25,38 @@ class Explore extends Component {
     DestinyStore.addChangeListener(() => this.onStoreChange());
   }
 
+  getNextPlanet(planetName) {
+    let result = null;
+
+    this.state.planets.forEach((planet, i, planets) => {
+      let next = planets[i + 1];
+      if (planet.name === planetName && next) {
+        result = next;
+      }
+    });
+
+    return result;
+  }
+
   checkCompletion() {
-    let completed = this.state.objectives.filter((obj) => { return obj.completed});
-    if (completed.length === this.props.objectives.length) {
-      window.location.href = '/rewards/';
+    let completed = this.state.objectives.filter((obj) => { 
+      return obj.completed;
+    });
+    if (completed.length !== this.props.objectives.length) {
+      return;
+    }
+
+    let next = this.getNextPlanet(this.props.planetName);
+    if (next) {
+      window.location.href = '/rewards/' + next.name;
+    } else {
+      window.location.href = '/rewards/win';
     }
   }
 
   onStoreChange() {
     this.setState({
+      planets: DestinyStore.getPlanets(),
       objectives: DestinyStore.getObjectives()
     });
     this.checkCompletion();

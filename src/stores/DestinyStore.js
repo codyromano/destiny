@@ -201,8 +201,6 @@ function updatePlanets() {
     }
   });
 
-  console.log(`planetsCompletionMap: ${planetsCompletionMap}`);
-
   planets = planets.map((p, index) => {
     let next = planets[index + 1];
     let isComplete = planetsCompletionMap[p.name];
@@ -214,8 +212,6 @@ function updatePlanets() {
     }
     return p;
   });
-
-  console.log(`planets: ${planets}`);
 
   localStore.save('planets', planets);
   return planets;
