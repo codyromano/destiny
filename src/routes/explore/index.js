@@ -12,7 +12,6 @@ export default {
       let planetObjectives = objectives.filter((obj) => {
         return obj.planet === context.params.planetName;
       });
-      //console.log(context.params.planetName);
 
     return <Explore headerImageSrc={planet.headerImageSrc} objectives={planetObjectives} planetName={context.params.planetName}/>;
   }

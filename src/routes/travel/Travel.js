@@ -16,25 +16,12 @@ import s from './Travel.css';
 const title = 'Destiny';
 
 function Travel({ planetName }, context) {
-  //context.setTitle(title);
-  /*
-          <ul className={s.news}>
-          {news.map((item, index) => (
-            <li key={index} className={s.newsItem}>
-              <a href={item.link} className={s.newsTitle}>{item.title}</a>
-              <span
-                className={s.newsDesc}
-                dangerouslySetInnerHTML={{ __html: item.contentSnippet }}
-              />
-            </li>
-          ))}
-        </ul>
-  */
   let planetURI = "/explore/" + planetName;
+  let videoSrc = `visit-${planetName}.mp4`;
 
   return (
     <div className={s.root}>
-      <CutScene fadeOutSpeed="500" nextUrl={planetURI} videoSrc="visit-planet.mp4"/>
+      <CutScene fadeOutSpeed="500" nextUrl={planetURI} videoSrc={videoSrc}/>
       <div className={s.container}></div>
     </div>
   );

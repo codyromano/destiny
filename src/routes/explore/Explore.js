@@ -39,7 +39,7 @@ class Explore extends Component {
   }
 
   checkCompletion() {
-    let completed = this.state.objectives.filter((obj) => { 
+    let completed = this.props.objectives.filter((obj) => { 
       return obj.completed;
     });
     if (completed.length !== this.props.objectives.length) {
