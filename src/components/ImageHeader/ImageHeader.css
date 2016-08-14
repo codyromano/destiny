@@ -10,10 +10,17 @@
   background-size: cover;
   position: relative;
 }
-.primaryHeader {
+.primaryHeaderWrapper {
   position: absolute;
-  bottom: 0.5rem;
-  left: 1rem;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.33);
+}
+.primaryHeader {
+  position: relative;
+  left: 0.75rem;
+
   font-family: Futura;
   font-size: 1.5rem;
   text-transform: uppercase;
@@ -38,17 +45,22 @@
   padding: .5rem 1rem 0rem .5rem;
 }
 
+.primaryCol {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+}
 .topBar {
   /* TODO: Use autoprefixer */
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
 
-  background-color: rgba(0,0,0,.5);
   width: 100%;
   padding: 0.5rem 0.25rem;
   font-size: 1.25rem;
   font-family: Abel;
+  background-color: rgba(0, 0, 0, 0.33);
 }
 .glimmer {
   color: #fff;

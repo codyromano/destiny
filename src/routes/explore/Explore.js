@@ -121,9 +121,12 @@ class Explore extends Component {
             backLinkText={backLinkText}
             imageSrc={props.headerImageSrc}
             title={props.planetName}/>
-          <h2 className={s.objectivesHeading}>Objectives</h2>
-          {geolocationError}
-          {objectives}
+
+          <div className={s.primaryCol}>
+            <h2 className={s.objectivesHeading}>Objectives</h2>
+            {geolocationError}
+            {objectives}
+          </div>
         </div>
       </div>
     );

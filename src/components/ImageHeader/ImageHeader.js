@@ -31,12 +31,18 @@ class ImageHeader extends Component {
     return (<header>
       <div className={s.imageBackground} style={imageStyle}>
         <div className={s.topBar}>
-          <a href={backLinkHref} className={s.backLink}>
-            {backLinkText}
-          </a>
-          <div className={s.glimmer}>{glimmer}</div>
+
+          <div className={s.primaryCol}>
+            <a href={backLinkHref} className={s.backLink}>{backLinkText}</a>
+            <div className={s.glimmer}>{glimmer}</div>
+          </div>
         </div>
-        <h1 className={s.primaryHeader}>{title}</h1>
+
+        <div className={s.primaryHeaderWrapper}>
+          <div className={s.primaryCol}>
+            <h1 className={s.primaryHeader}>{title}</h1>
+          </div>
+        </div>
       </div>
     </header>);
   }
