@@ -28,11 +28,13 @@ class Planet extends Component {
     }, true);
   }
   visitPlanet() {
-    let explorePlanetURI = ['/travel/', this.props.name, '/'].join('');
+    let explorePlanetURI = ['/travel/', this.props.name,
+      '/'].join('');
     window.location.href = explorePlanetURI;
   }
 
   teasePlanet() {
+    this.refs.lockedModal.classList.add(s.showing);
   }
 
   render() {
@@ -48,10 +50,20 @@ class Planet extends Component {
     let planetAction = (discovered ? this.visitPlanet :
       this.teasePlanet).bind(this);
 
+    let lockedModal;
+
+    if (!discovered) {
+      lockedModal = (<div ref="lockedModal" className={s.lockedModal}>
+        You need <span className={s.glimmerText}>x</span> more glimmer to unlock this. Complete
+         objectives to earn glimmer.
+      </div>);
+    }
+
     return (<div ref="wrapper" className={s.planetMainWrapper}>
       <div className={s.planet} onClick={planetAction}>
         <h2 className={s.planetHeading}>{name}</h2>
         <img ref="planetImage" src={imageSrc} className={classList} style={style}/>
+        {lockedModal}
       </div>
     </div>);
   }

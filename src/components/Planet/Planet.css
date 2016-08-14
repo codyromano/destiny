@@ -6,6 +6,35 @@
   max-width: 30rem;
   padding: 0%;
   text-align: center;
+    cursor: pointer;
+}
+
+.glimmerText::before {
+  content: '';
+  display: inline-block;
+  height: 1em;
+  width: 1em;
+  background: url(/images/glimmer.png) no-repeat;
+  background-size: cover;
+  margin-right: 0.25em;
+  margin-left: 0.25em;
+}
+
+.lockedModal {
+  position: absolute;
+  bottom: 0%;
+  width: 75%;
+  left: 12.5%;
+  right: 12.5%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  opacity: 0;
+  transition: opacity ease 1s;
+}
+.lockedModal.showing {
+  opacity: 1;
 }
 
 .planetPreloading {
@@ -50,10 +79,6 @@
 
 .planet:hover .planetImage {
   opacity: 1;
-}
-
-.planetImageDiscovered, .planetImageDiscovered .planetHeading {
-  cursor: pointer;
 }
 
 .preload {
