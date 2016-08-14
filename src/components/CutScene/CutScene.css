@@ -40,3 +40,27 @@
 .hiddenOpacity {
   opacity: 0;
 }
+.skipButton {
+  cursor: pointer;
+  font-family: Abel, Helvetica;
+  background-color: transparent;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none;
+  outline: 0;
+  color: #fff;
+  font-size: 1.25rem;
+  padding: 0 1.5rem 1.5rem 0;
+  opacity: 0.5;
+  transition: ease opacity .5s;
+}
+.skipButton:hover {
+  opacity: 1;
+}
+.skipButtonWrapper {
+  position: absolute;
+  bottom: 0rem;
+  right: 0rem;
+  z-index: 2;
+}

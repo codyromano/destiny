@@ -95,6 +95,11 @@ class CutScene extends Component {
         autoPlay="true"
         onPlay={this.play.bind(this)} ref="cutSceneVideo" 
         src={src} className={s.cutSceneVideo}/>
+
+        <div className={s.skipButtonWrapper}>
+          <button onClick={this.skipScene.bind(this)}
+          className={s.skipButton}>Skip Cutscene</button>
+        </div>
     </div>);
   }
 }
