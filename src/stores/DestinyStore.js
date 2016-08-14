@@ -12,6 +12,9 @@ let geo = {
   userCoords: null
 };
 
+let glimmer = getStoredGlimmer() || 0;
+
+const GLIMMER_EARNED_PER_OBJECTIVE = 150;
 const CHANGE_EVENT = 'change';
 
 let objectives = getStoredObjectives() || [
@@ -96,6 +99,19 @@ function getStoredObjectives() {
   return stored;
 }
 
+function getStoredGlimmer() {
+  let stored = localStore.get('glimmer');
+  if (stored === null) {
+    return 0;
+  }
+  return parseFloat(stored);
+}
+
+function increaseGlimmer(amount) {
+  glimmer+= amount;
+  localStore.save('glimmer', glimmer);
+}
+
 function getStoredPlanets() {
   let stored = localStore.get('planets');
   if (stored === null) {
@@ -114,6 +130,10 @@ getStoredObjectives();
 let DestinyStore = Object.assign({}, EventEmitter.prototype, {
   getAll: function() {
     return Object.assign({}, geo);
+  },
+
+  getGlimmer: function() {
+    return glimmer;
   },
 
   getPlanets: function(planetName) {
@@ -221,6 +241,7 @@ function checkIn(objectiveId) {
   for (let objective of objectives) {
     if (objective.id === objectiveId) {
       objective.completed = true;
+      increaseGlimmer(GLIMMER_EARNED_PER_OBJECTIVE);
       break;
     }
   }
