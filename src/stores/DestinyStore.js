@@ -17,6 +17,7 @@ let glimmer = getStoredGlimmer() || 0;
 const GLIMMER_EARNED_PER_OBJECTIVE = 150;
 const CHANGE_EVENT = 'change';
 
+
 let objectives = getStoredObjectives() || [
   {
     id: 'Earth-1',
@@ -59,6 +60,26 @@ let objectives = getStoredObjectives() || [
     trackCoords: [47.617326, -122.330787]
   }
 ];
+
+// Find how much additional glimmer the player needs to unlock a planet
+function getGlimmerNeeded(planetName) {
+  let glimmerNeeded = 0;
+
+  for (let i=0, l=objectives.length; i<l; i++) {
+    // We don't need to consider objectives associated with the target
+    // planet itself or the planets that follow it
+    if (objectives[i].planet === planetName) {
+      break;
+    }
+    if (!objectives[i].completed) {
+      glimmerNeeded+= GLIMMER_EARNED_PER_OBJECTIVE;
+    }
+  }
+
+  console.log(`${glimmerNeeded} needed for ${planetName}`);
+
+  return glimmerNeeded;
+}
 
 var planets = getStoredPlanets() || [{
   name: 'Earth',
@@ -135,6 +156,8 @@ let DestinyStore = Object.assign({}, EventEmitter.prototype, {
   getGlimmer: function() {
     return glimmer;
   },
+
+  getGlimmerNeeded: getGlimmerNeeded,
 
   getPlanets: function(planetName) {
     if (planetName) {

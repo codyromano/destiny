@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Planet.css';
+import DestinyStore from '../../stores/DestinyStore';
 
 /* TODO: This belongs in a more general utility file */
 function preloadImage(img, preloadClass) {
@@ -53,8 +54,10 @@ class Planet extends Component {
     let lockedModal;
 
     if (!discovered) {
+      let extraNeeded = DestinyStore.getGlimmerNeeded(this.props.name);
+
       lockedModal = (<div ref="lockedModal" className={s.lockedModal}>
-        You need <span className={s.glimmerText}>x</span> more glimmer to unlock this. Complete
+        You need <span className={s.glimmerText}>{extraNeeded}</span> more glimmer to unlock this. Complete
          objectives to earn glimmer.
       </div>);
     }
