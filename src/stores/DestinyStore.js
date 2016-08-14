@@ -8,15 +8,19 @@ import LocalStore from '../localStore';
 
 let localStore = new LocalStore('destiny');
 
-let geo = {
-  userCoords: null
-};
-
 let glimmer = getStoredGlimmer() || 0;
 
 const GLIMMER_EARNED_PER_OBJECTIVE = 150;
 const CHANGE_EVENT = 'change';
 
+const GEOLOCATION_ERROR = 'error';
+const GEOLOCATION_ACQUIRED = 'ok';
+const GEOLOCATION_NOT_REQUESTED = 'not_requested';
+
+let geo = {
+  userCoords: null,
+  status: GEOLOCATION_NOT_REQUESTED
+};
 
 let objectives = getStoredObjectives() || [
   {
@@ -208,6 +212,7 @@ let DestinyStore = Object.assign({}, EventEmitter.prototype, {
   emitChange: function() {
     this.emit(CHANGE_EVENT);
   },
+
   /**
    * @param {function} callback
    */
@@ -274,6 +279,11 @@ function checkIn(objectiveId) {
   DestinyStore.emitChange();
 }
 
+function onGeolocationError() {
+  geo.status = GEOLOCATION_ERROR;
+  DestinyStore.emitChange();
+}
+
 function getGeolocation() {
   let browserSupport = (window.navigator && window.navigator.geolocation);
   if (!browserSupport) {
@@ -282,8 +292,9 @@ function getGeolocation() {
   }
   window.navigator.geolocation.watchPosition(function(pos) {
     geo.userCoords = pos.coords;
+    geo.status = GEOLOCATION_ACQUIRED;
     DestinyStore.emitChange();
-  });
+  }, onGeolocationError);
 }
 
 let spaceNeedle = [47.655899,-122.202289];
