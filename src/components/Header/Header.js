@@ -11,7 +11,6 @@ import React from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Header.css';
 import Link from '../Link';
-import Navigation from '../Navigation';
 import logoUrl from './logo.jpg';
 
 function Header() {
@@ -20,7 +19,6 @@ function Header() {
       <div className={s.container}>
         <div className={s.foobar}></div>
         <img className={s.logo} src={logoUrl} alt="Destiny logo" />
-        <Navigation className={s.nav} />
       </div>
     </div>
   );
