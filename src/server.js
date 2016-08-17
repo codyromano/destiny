@@ -10,14 +10,10 @@ import { ErrorPage } from './routes/error/ErrorPage';
 import errorPageStyle from './routes/error/ErrorPage.css';
 import UniversalRouter from 'universal-router';
 import PrettyError from 'pretty-error';
-import passport from './core/passport';
-import models from './data/models';
-import schema from './data/schema';
+
 import routes from './routes';
 import assets from './assets'; // eslint-disable-line import/no-unresolved
 import { port, auth } from './config';
-
-let generateUniqueId = require('./generateUniqueId.js');
 
 const app = express();
 
@@ -35,33 +31,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
-// TODO: This should be POST because it's creating a resource
-app.get('/session/create', (req, res) => {
-  const oneHundredDays = 1000 * 60 * 60 * 24 * 100;
-
-  let removeApos = new RegExp("'","g");
-  let id = generateUniqueId().replace(removeApos, '');
-  res.cookie('userSessionId', id, {maxAge: oneHundredDays});
-
-  let response = JSON.stringify({userSessionId: id});
-
-  // TODO: JSON header
-  res.send("example.com/" + id);
-  //res.send(response);
-});
-
-app.get('/session/fetch', (req, res) => {
-  let id = req.cookies.userSessionId;
-
-  let response = {
-    sessionActive: id ? true : false,
-    userSessionId: id ? id : null
-  };
-  res.send("example.com/" + id);
-  //res.send(JSON.stringify(response));
-});
-
 
 //
 // Register server-side rendering middleware
@@ -123,13 +92,6 @@ app.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
   res.send(`<!doctype html>${html}`);
 });
 
-//
-// Launch the server
-// -----------------------------------------------------------------------------
-/* eslint-disable no-console */
-models.sync().catch(err => console.error(err.stack)).then(() => {
-  app.listen(port, () => {
-    console.log(`The server is running at http://localhost:${port}/`);
-  });
+app.listen(port, () => {
+  console.log(`The server is running at http://localhost:${port}/`);
 });
-/* eslint-enable no-console */
