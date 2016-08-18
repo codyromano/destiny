@@ -9,7 +9,6 @@ import Html from './components/Html';
 import { ErrorPage } from './routes/error/ErrorPage';
 import errorPageStyle from './routes/error/ErrorPage.css';
 import UniversalRouter from 'universal-router';
-import PrettyError from 'pretty-error';
 
 import routes from './routes';
 import assets from './assets'; // eslint-disable-line import/no-unresolved
@@ -68,13 +67,6 @@ app.get('*', async (req, res, next) => {
     next(err);
   }
 });
-
-//
-// Error handling
-// -----------------------------------------------------------------------------
-const pe = new PrettyError();
-pe.skipNodeFiles();
-pe.skipPackage('express');
 
 app.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
   console.log(pe.render(err)); // eslint-disable-line no-console

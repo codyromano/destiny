@@ -19,7 +19,8 @@ class Explore extends Component {
       planets: [],
       objectives: [],
       geo: {
-        status: 'not_requested'
+        status: 'not_requested',
+        positionErrorCode: null
       }
     };
   }
@@ -106,11 +107,27 @@ class Explore extends Component {
     let props = this.props;
     let objectives = this.getObjectives();
 
-    let geolocationError;
-    if (this.state.geo.status === 'error') {
-      geolocationError = (<div className={s.geoError}>
+    let geolocationError, 
+        geoErrorMsgBody,
+        geoErrorMsgHead;
 
-      <strong>Please share your location</strong> Enable location sharing on your device so the game can guide you to objectives. Once you've enabled it, <a href="javascript:window.location.reload()">reload the page</a>.
+    if (this.state.geo.status === 'error') {
+
+      switch (this.state.geo.positionErrorCode) {
+        case 2:
+          geoErrorMsgHead = `You're offline`;
+          geoErrorMsgBody = `Connect to the Internet so you can share your
+            location.`;
+        break;
+        default:
+          // Fall back to generic geolocation error
+          geoErrorMsgHead = 'Please share your location';
+          geoErrorMsgBody = 'Enable location sharing on your device so the game can guide you to objectives.';
+        break;
+      }
+
+      geolocationError = (<div className={s.geoError}>
+      <strong>{geoErrorMsgHead}</strong>{geoErrorMsgBody} <a href="javascript:window.location.reload()">Reload the page</a> and try again.
       </div>);
     }
     

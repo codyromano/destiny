@@ -279,8 +279,10 @@ function checkIn(objectiveId) {
   DestinyStore.emitChange();
 }
 
-function onGeolocationError() {
+function onGeolocationError(positionError) {
   geo.status = GEOLOCATION_ERROR;
+  geo.positionErrorCode = positionError.code;
+
   DestinyStore.emitChange();
 }
 
