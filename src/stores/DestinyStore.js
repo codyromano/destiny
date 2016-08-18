@@ -137,6 +137,11 @@ function increaseGlimmer(amount) {
   localStore.save('glimmer', glimmer);
 }
 
+function decreaseGlimmer(amount) {
+  glimmer = Math.max(0, glimmer - amount);
+  localStore.save('glimmer', glimmer);
+}
+
 function getStoredPlanets() {
   let stored = localStore.get('planets');
   if (stored === null) {
@@ -227,6 +232,31 @@ let DestinyStore = Object.assign({}, EventEmitter.prototype, {
   }
 });
 
+function toggleCheat(objectiveId, setting) {
+  let objectiveIndex;
+
+  for (let i=0, l=objectives.length; i<l; i++) {
+    if (objectives[i].id === objectiveId) {
+      objectiveIndex = i;
+      break;
+    }
+  }
+
+  if (objectiveIndex === undefined) {
+    throw new Error(`Cannot toggle cheat. Unknown
+      planet name: ${name}`);
+  }
+  if (typeof setting !== 'boolean') {
+    throw new Error(`Invalid cheat setting: ${setting}.
+      The setting must be a boolean.`);
+  }
+
+  objectives[objectiveIndex].completed = setting;
+  localStore.save('objectives', objectives);
+
+  DestinyStore.emitChange();
+}
+
 function planetComplete(planetName, objectives) {
   objectives = objectives.filter((obj) => obj.planetName === planetName);
   let completed = objectives.filter((obj) => obj.completed);
@@ -255,9 +285,15 @@ function updatePlanets() {
 
     /* If all the objectives for this planet are complete and a next
     planet exists, mark the next one as discovered. */
+    if (next) {
+      planets[index + 1].discovered = isComplete;
+    }
+
+    /*
     if (isComplete && next) {
       planets[index + 1].discovered = true;
     }
+    */
     return p;
   });
 
@@ -270,6 +306,20 @@ function checkIn(objectiveId) {
     if (objective.id === objectiveId) {
       objective.completed = true;
       increaseGlimmer(GLIMMER_EARNED_PER_OBJECTIVE);
+      break;
+    }
+  }
+
+  localStore.save('objectives', objectives);
+  updatePlanets();
+  DestinyStore.emitChange();
+}
+
+function undoCheckIn(objectiveId) {
+  for (let objective of objectives) {
+    if (objective.id === objectiveId && objective.completed === true) {
+      objective.completed = false;
+      decreaseGlimmer(GLIMMER_EARNED_PER_OBJECTIVE);
       break;
     }
   }
@@ -314,6 +364,12 @@ AppDispatcher.register(function(action) {
     break;
     case DestinyConstants.OBJECTIVE_CHECKIN:
       checkIn(action.objectiveId);
+    break;
+    case DestinyConstants.OBJECTIVE_UNDO_CHECKIN:
+      undoCheckIn(action.objectiveId);
+    break;
+    case DestinyConstants.CHEAT_TOGGLE:
+      toggleCheat(action.cheatName, action.setting);
     break;
     default:
       console.warn(`Unrecognized action: ${action.actionType}`);

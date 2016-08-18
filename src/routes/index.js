@@ -18,6 +18,7 @@ import orbit from './orbit';
 import explore from './explore';
 import rewards from './rewards';
 import error from './error';
+import cheat from './cheat';
 
 export default {
 
@@ -31,6 +32,7 @@ export default {
     orbit,
     explore,
     error,
+    cheat
   ],
 
   async action({ next, render, context }) {

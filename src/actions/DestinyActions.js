@@ -12,6 +12,19 @@ let DestinyActions = {
       actionType: DestinyConstants.OBJECTIVE_CHECKIN,
       objectiveId: objectiveId
     });
+  },
+  undoCheckIn(objectiveId) {
+    AppDispatcher.dispatch({
+      actionType: DestinyConstants.OBJECTIVE_UNDO_CHECKIN,
+      objectiveId: objectiveId
+    });
+  },
+  toggleCheat(cheatName, setting) {
+    AppDispatcher.dispatch({
+      cheatName: cheatName,
+      setting: setting,
+      actionType: DestinyConstants.CHEAT_TOGGLE
+    });
   }
 };
 
