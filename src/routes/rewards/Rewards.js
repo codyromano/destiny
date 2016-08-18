@@ -19,12 +19,22 @@ class Reward extends Component {
   }
 
   componentDidMount() {
-    setTimeout(this.startCountdown.bind(this), 3000);
+    let timeoutMs = 3000;
+
+    if (!this.gameComplete()) {
+      setTimeout(this.startCountdown.bind(this), timeoutMs);
+    } else {
+      setTimeout(this.fadeInHeader.bind(this), timeoutMs);
+    }
+  }
+
+  fadeInHeader() {
+    this.refs.planetHeadingWrapper.classList.add(s.visible);
   }
 
   startCountdown() {
     this.refs.countdownWrapper.classList.add(s.visible);
-    this.refs.planetHeadingWrapper.classList.add(s.visible);
+    this.fadeInHeader();
 
     let count = this.state.countdown;
 
@@ -38,10 +48,35 @@ class Reward extends Component {
     }
   }
 
+  gameComplete() {
+    return this.props.planetName === 'win';
+  }
+
   render() {
     let {countdown} = this.state;
     let {planetName} = this.props;
+
+    let itemTitle = this.gameComplete() ? 'box' : planetName;
     let uri = `/images/${planetName}.png`;
+    let backMessage = '';
+
+    if (!this.gameComplete()) {
+      backMessage = (<div className={s.continueWrapper} 
+        ref="countdownWrapper">
+        Back to orbit in <span className={s.countdown}
+        ref="countdown">{countdown}</span>
+      </div>);
+    }
+
+    let graphic = (<div className={s.unlockedWrapper}>
+      <img src={uri} className={s.planet}/>
+    </div>);
+
+    if (this.gameComplete()) {
+      graphic = (<div className={s.unlockedWrapper}>
+        <div className={s.unlockCode}>0724</div>
+      </div>);
+    }
 
     return (
       <div className={s.root}>
@@ -52,16 +87,11 @@ class Reward extends Component {
           </h1>
         </div>
         <div className={s.continueWrapper} ref="planetHeadingWrapper">
-          <h2>Unlocked {planetName}</h2>
+          <h2>Unlocked {itemTitle}</h2>
         </div>
-        <div className={s.unlockedWrapper}>
-          <img src={uri} className={s.planet}/>
-        </div>
-        <div className={s.continueWrapper} ref="countdownWrapper">
-          Back to orbit in <span className={s.countdown} ref="countdown">
-            {countdown}
-          </span>
-        </div>
+        {graphic}
+
+        {backMessage}
       </div>
     );
   }

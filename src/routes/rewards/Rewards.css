@@ -20,6 +20,13 @@ body, html {
   color: #fff;
 }
 
+.unlockCode {
+  display: block;
+  padding: 3rem 0;
+  text-align: center;
+  font-size: 3rem;
+}
+
 .rewardsHeader {
   display: block;
   position: relative;
