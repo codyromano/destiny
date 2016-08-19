@@ -19,8 +19,7 @@ function Home({}, context) {
   return (
     <div className={s.root}>
       <CutScene fadeOutSpeed="500" nextUrl="/orbit"
-      videoSrc="intro-edited.mp4"
-      posterSrc="intro-edited-poster.jpg"/>
+      videoSrc="intro-edited.mp4"/>
       <div className={s.container}></div>
     </div>
   );
