@@ -83,7 +83,7 @@ const config = {
             modules: true,
             localIdentName: DEBUG ? '[name]_[local]_[hash:base64:3]' : '[hash:base64:4]',
             // CSS Nano http://cssnano.co/options/
-            minimize: !DEBUG,
+            minimize: true,
           })}`,
           'postcss-loader?pack=default',
         ],
@@ -109,7 +109,7 @@ const config = {
         test: /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
         loader: 'url-loader',
         query: {
-          name: DEBUG ? '[path][name].[ext]?[hash]' : '[hash].[ext]',
+          name: '[hash].[ext]',
           limit: 10000,
         },
       },
@@ -117,7 +117,7 @@ const config = {
         test: /\.(eot|ttf|wav|mp3)$/,
         loader: 'file-loader',
         query: {
-          name: DEBUG ? '[path][name].[ext]?[hash]' : '[hash].[ext]',
+          name: '[hash].[ext]',
         },
       },
     ],
@@ -129,12 +129,12 @@ const config = {
     extensions: ['', '.webpack.js', '.web.js', '.js', '.jsx', '.json'],
   },
 
-  cache: DEBUG,
-  debug: DEBUG,
+  cache: true,
+  debug: false,
 
   stats: {
     colors: true,
-    reasons: DEBUG,
+    reasons: false,
     hash: VERBOSE,
     version: VERBOSE,
     timings: true,
@@ -202,8 +202,8 @@ const clientConfig = extend(true, {}, config, {
   entry: './client.js',
 
   output: {
-    filename: DEBUG ? '[name].js?[chunkhash]' : '[name].[chunkhash].js',
-    chunkFilename: DEBUG ? '[name].[id].js?[chunkhash]' : '[name].[id].[chunkhash].js',
+    filename: '[name].[chunkhash].js',
+    chunkFilename: '[name].[id].[chunkhash].js',
   },
 
   target: 'web',
@@ -227,7 +227,7 @@ const clientConfig = extend(true, {}, config, {
     // https://webpack.github.io/docs/list-of-plugins.html#occurrenceorderplugin
     new webpack.optimize.OccurrenceOrderPlugin(true),
 
-    ...DEBUG ? [] : [
+    ...[
 
       // Search for equal or similar files and deduplicate them in the output
       // https://webpack.github.io/docs/list-of-plugins.html#dedupeplugin
@@ -250,7 +250,7 @@ const clientConfig = extend(true, {}, config, {
 
   // Choose a developer tool to enhance debugging
   // http://webpack.github.io/docs/configuration.html#devtool
-  devtool: DEBUG ? 'cheap-module-eval-source-map' : false,
+  devtool: false,
 });
 
 //
