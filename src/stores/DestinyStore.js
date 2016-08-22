@@ -25,27 +25,36 @@ let geo = {
 let objectives = getStoredObjectives() || [
   {
     id: 'Earth-1',
-    mainText: 'Get coffee from Voxx',
-    subText: `This is a big adventure. You'll need lots of energy.`,
+    mainText: 'Go home and pack',
+    subText: `You'll need a weekend bag with a set of
+      comfortable shoes.`,
     planet: 'Earth',
     completed: false,
-    trackCoords: [47.734268,-122.152549]
+    trackCoords: [47.641765,-122.326487]
   },
   {
     id: 'Earth-2',
-    mainText: 'Collect a bottle of wine',
-    subText: 'Visit the Columbia Winery in Woodenville',
+    mainText: 'Get coffee from Voxx',
+    subText: `This is a big adventure. You'll need lots of energy. Check-in when you're done.`,
     planet: 'Earth',
     completed: false,
     trackCoords: [47.734268,-122.152549]
   },
   {
     id: 'Earth-3',
-    mainText: 'Go to the spa',
-    subText: 'Visit the spa with Amanda and Malissa.',
+    mainText: `Collect s'mores stuff`,
+    subText: `Buy chocolate and marshmallows from Pete's`,
     planet: 'Earth',
     completed: false,
-    trackCoords: [47.617326, -122.330787]
+    trackCoords: [47.641765,-122.326487]
+  },
+  {
+    id: 'Earth-3',
+    mainText: 'Collect a bottle of wine',
+    subText: 'Visit the Columbia Winery in Woodenville',
+    planet: 'Earth',
+    completed: false,
+    trackCoords: [47.734268,-122.152549]
   },
   {
     id: 'Mars-1',
