@@ -49,8 +49,8 @@ let objectives = getStoredObjectives() || [
     trackCoords: [47.641765,-122.326487]
   },
   {
-    id: 'Earth-3',
-    mainText: 'Collect a bottle of wine',
+    id: 'Earth-4',
+    mainText: 'Get a bottle of wine',
     subText: 'Visit the Columbia Winery in Woodenville',
     planet: 'Earth',
     completed: false,
