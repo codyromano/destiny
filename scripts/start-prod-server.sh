@@ -1,4 +1,4 @@
-cd /home/destiny/
+cd ../destiny/
 npm run build -- --release
-cd /home/destiny/build
+cd ./build
 node server
