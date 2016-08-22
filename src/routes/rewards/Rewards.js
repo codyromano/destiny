@@ -3,6 +3,7 @@ import CutScene from '../../components/CutScene';
 
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Rewards.css';
+import history from '../../core/history';
 
 const title = 'Destiny';
 
@@ -44,7 +45,7 @@ class Reward extends Component {
       });
       setTimeout(this.startCountdown.bind(this), 1000);
     } else {
-     window.location.href = '/orbit';
+     history.push({pathname: '/orbit'});
     }
   }
 

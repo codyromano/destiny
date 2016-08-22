@@ -4,6 +4,7 @@ import s from './Explore.css';
 import ImageHeader from '../../components/ImageHeader';
 import Objective from '../../components/Objective';
 import DestinyStore from '../../stores/DestinyStore';
+import history from '../../core/history';
 
 const title = 'Explore';
 
@@ -52,9 +53,9 @@ class Explore extends Component {
 
     let next = this.getNextPlanet(this.props.planetName);
     if (next) {
-      window.location.href = '/rewards/' + next.name;
+      history.push({pathname: '/rewards/' + next.name});
     } else {
-      window.location.href = '/rewards/win';
+      history.push({pathname: '/rewards/win'});
     }
   }
 

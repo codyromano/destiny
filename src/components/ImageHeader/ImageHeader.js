@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './ImageHeader.css';
 import DestinyStore from '../../stores/DestinyStore';
+import history from '../../core/history';
+import Link from '../Link';
 
 class ImageHeader extends Component {
   constructor() {
@@ -28,12 +30,13 @@ class ImageHeader extends Component {
       backgroundImage: `url(${imageSrc})`
     };
 
+    /* <a href={backLinkHref} className={s.backLink}>{backLinkText}</a> */
     return (<header>
       <div className={s.imageBackground} style={imageStyle}>
         <div className={s.topBar}>
 
           <div className={s.primaryCol}>
-            <a href={backLinkHref} className={s.backLink}>{backLinkText}</a>
+            <Link to={backLinkHref} text={backLinkText} className={s.backLink}/>
             <div className={s.glimmer}>{glimmer}</div>
           </div>
         </div>

@@ -25,7 +25,6 @@ function Orbit(props, context) {
       discovered={planet.discovered}/>);
   });
 
-
   return (
     <div className={s.orbitRoot}>
       <div className={s.planetsWrapper}>

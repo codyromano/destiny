@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './CutScene.css';
- 
+import history from '../../core/history';
+
 // Not a great approach, but good enough for this
  var isMobile = {
     Android: function() {
@@ -52,7 +53,7 @@ class CutScene extends Component {
   }
 
   skipScene() {
-    window.location.href = this.props.nextUrl;
+    history.push({pathname: this.props.nextUrl});
   }
 
   play() {
@@ -71,7 +72,7 @@ class CutScene extends Component {
 
     let fade = parseInt(this.props.fadeOutSpeed) || 0;
     setTimeout(() => {
-      window.location.href = this.props.nextUrl;
+      history.push({pathname: this.props.nextUrl});
     }, fade);
   }
 

@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Planet.css';
 import DestinyStore from '../../stores/DestinyStore';
+import history from '../../core/history';
 
 /* TODO: This belongs in a more general utility file */
 function preloadImage(img, preloadClass) {
@@ -31,7 +32,7 @@ class Planet extends Component {
   visitPlanet() {
     let explorePlanetURI = ['/travel/', this.props.name,
       '/'].join('');
-    window.location.href = explorePlanetURI;
+    history.push({ pathname: explorePlanetURI});
   }
 
   teasePlanet() {
