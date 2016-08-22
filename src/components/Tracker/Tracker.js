@@ -41,7 +41,8 @@ class Tracker extends Component {
     let content = (<div></div>);
     let isNumber = (n) => !isNaN(parseInt(n));
 
-    if (this.props.tracking && isNumber(milesAway) && milesAway < 0.05) {
+    if (this.props.tracking && isNumber(milesAway) && milesAway 
+      <= DestinyStore.getDistThreshold()) {
       content = (<button onClick={this.checkIn.bind(this)} className={s.checkIn}>Check In</button>);
 
     } else if (milesAway !== null && this.props.tracking) {

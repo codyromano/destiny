@@ -5,7 +5,16 @@
   padding-right: 20px;
   margin: 0 auto;
   padding: 0.5rem 0.75rem;
-  max-width: var(--max-content-width);
+  max-width: 30rem;
+}
+
+.col5 {
+  display: inline-block;
+  width: 50%;
+}
+
+.threshold {
+  width: 5rem;
 }
 
 .container {

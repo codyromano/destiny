@@ -164,6 +164,15 @@ function getStoredPlanets() {
 
 getStoredObjectives();
 
+function getThreshold() {
+  // return localStore.get('threshold') || 0.05;
+  let threshold = localStore.get('threshold');
+  if (threshold === null || isNaN(threshold)) {
+    return 0.025;
+  }
+  return parseFloat(threshold);
+}
+
 let DestinyStore = Object.assign({}, EventEmitter.prototype, {
   getAll: function() {
     return Object.assign({}, geo);
@@ -217,11 +226,20 @@ let DestinyStore = Object.assign({}, EventEmitter.prototype, {
     return [lonDescriptor, latDescriptor].join('');
   },
 
+  getDistThreshold: function() {
+    return getThreshold();
+  },
+
   getDist: function(coordsA, coordsB) {
     return haversine(coordsA, coordsB);
   },
 
   emitChange: function() {
+    this.emit(CHANGE_EVENT);
+  },
+
+  updateThreshold: function(value) {
+    localStore.save('threshold', value);
     this.emit(CHANGE_EVENT);
   },
 

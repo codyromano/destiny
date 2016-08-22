@@ -13,7 +13,8 @@ class Cheat extends Component {
   constructor(...args) {
     super(...args);
     this.state = {
-      objectives: DestinyStore.getObjectives()
+      objectives: DestinyStore.getObjectives(),
+      threshold: DestinyStore.getDistThreshold()
     };
   }
 
@@ -23,7 +24,8 @@ class Cheat extends Component {
 
   onStoreChange() {
     this.setState({
-      objectives: DestinyStore.getObjectives()
+      objectives: DestinyStore.getObjectives(),
+      threshold: DestinyStore.getDistThreshold()
     });
   }
 
@@ -34,6 +36,13 @@ class Cheat extends Component {
       DestinyActions.checkIn(objectiveId);
     } else {
       DestinyActions.undoCheckIn(objectiveId);
+    }
+  }
+
+  updateDist() {
+    let newThreshold = this.refs.threshold.value;
+    if (!isNaN(newThreshold) && newThreshold >= 0) {
+      DestinyStore.updateThreshold(newThreshold);
     }
   }
 
@@ -57,11 +66,19 @@ class Cheat extends Component {
       );
     });
 
+    let threshold = this.state.threshold;
+
     return (
       <div className={s.root}>
         <a href="/orbit">&lt; Back to Orbit</a>
         <hr/>
         <h1>Cheats</h1>
+        <h2>Geolocation</h2>
+        <fieldset>
+          <label className={s.col5}>Distance threshold</label>
+          <input ref="threshold" onChange={this.updateDist.bind(this)}
+          type="number" className={s.threshold} defaultValue={threshold}/>
+        </fieldset>
         <h2>Unlock Objectives</h2>
         {objectives}
       </div>
