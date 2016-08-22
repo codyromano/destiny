@@ -77,7 +77,7 @@ class Cheat extends Component {
         <fieldset>
           <label className={s.col5}>Distance threshold</label>
           <input ref="threshold" onChange={this.updateDist.bind(this)}
-          type="number" className={s.threshold} defaultValue={threshold}/>
+          type="text" className={s.threshold} defaultValue={threshold}/>
         </fieldset>
         <h2>Unlock Objectives</h2>
         {objectives}
