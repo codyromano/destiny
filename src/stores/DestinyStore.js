@@ -25,19 +25,19 @@ let geo = {
 let objectives = getStoredObjectives() || [
   {
     id: 'Earth-1',
-    mainText: 'Go to the spa',
-    subText: 'Visit the spa with Amanda and Malissa.',
+    mainText: 'Get coffee from Voxx',
+    subText: `This is a big adventure. You'll need lots of energy.`,
     planet: 'Earth',
     completed: false,
-    trackCoords: [47.617326, -122.330787]
+    trackCoords: [47.734268,-122.152549]
   },
   {
     id: 'Earth-2',
-    mainText: 'Go to the movies',
-    subText: 'Visit the movies with blah blah',
+    mainText: 'Collect a bottle of wine',
+    subText: 'Visit the Columbia Winery in Woodenville',
     planet: 'Earth',
     completed: false,
-    trackCoords: [47.617326, -122.330787]
+    trackCoords: [47.734268,-122.152549]
   },
   {
     id: 'Earth-3',
@@ -79,8 +79,6 @@ function getGlimmerNeeded(planetName) {
       glimmerNeeded+= GLIMMER_EARNED_PER_OBJECTIVE;
     }
   }
-
-  console.log(`${glimmerNeeded} needed for ${planetName}`);
 
   return glimmerNeeded;
 }
