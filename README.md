@@ -1,32 +1,46 @@
 # Cait Destiny
 
-## Getting started
+## Get started
 
-1. Clone the repo
+Clone the repo
 ```
 git clone https://github.com/codyromano/destiny.git
 ```
-2. Start the development server
+Start the development server
 ```
-cd destiny
+cd destiny/
 npm start
 open http://localhost:3001
 ```
 
-## Starting the Prod server (HTTP)
+## Deploy to Prod
 
-From the project's root directory, run:
 ```
+cd /destiny/
 npm run build -- --release
 cd build && node server
 open http://localhost:3000
-``
-
-## HTTPs proxy for Prod server
-
-I'm using a proxy for HTTPS. To start the proxy server, navigate to the root directory and run:
 ```
+
+## Set up HTTP for Prod (Optional)
+
+I don't expect anyone will want or need to follow this step. It's mostly for my own future reference. But on the off chance you want to run this app on your own domain, you'll need to get your own SSL key and certificate. I got a free one from [StartSSL](https://startssl.com). 
+
+Place your key and cert in the `src` directory:
+```
+/destiny/src/ssl2.crt
+/destiny/src/ssl.key
+```
+I'm using a proxy server (via Node's `http-proxy`) that maps HTTPS requests to an HTTP server. First make sure the HTTP server is running:
+```
+ps -aux | grep '3000'
+```
+You should see the server running on port 3000. If so, start the proxy server:
+```
+cd /destiny/src/
 node proxy.js
 ```
-
-
+Now HTTPS requests should be mapped to the HTTP server:
+```
+open https://yourdomain.com/
+```
