@@ -1,5 +1,7 @@
 # Cait Destiny
 
+![https://caitdestiny.com](https://i.imgur.com/mtXrJ7P.jpg)
+
 ## Get started
 
 Clone the repo
