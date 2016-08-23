@@ -1,0 +1,6 @@
+{
+  "name": "Soundtrack",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./Soundtrack.js"
+}

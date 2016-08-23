@@ -1,0 +1,9 @@
+.soundtrackButton {
+  appearance: none;
+  outline: 0;
+  border: none;
+  color: #eee;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 1rem;
+}
