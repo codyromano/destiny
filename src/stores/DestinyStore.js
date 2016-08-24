@@ -25,52 +25,51 @@ let geo = {
 let objectives = getStoredObjectives() || [
   {
     id: 'Earth-1',
-    mainText: 'Go home and pack',
-    subText: `You'll need a weekend bag with a set of
-      comfortable shoes.`,
+    mainText: 'Buy a cup of coffee',
+    subText: `You'll need energy for today's adventure.`,
     planet: 'Earth',
     completed: false,
-    trackCoords: [47.641765,-122.326487]
+    trackCoords: [47.639648, -122.326103]
   },
   {
     id: 'Earth-2',
-    mainText: 'Get coffee from Voxx',
-    subText: `This is a big adventure. You'll need lots of energy. Check-in when you're done.`,
+    mainText: `Prepare for s'mores`,
+    subText: `Find items in Pete's Market`,
     planet: 'Earth',
     completed: false,
-    trackCoords: [47.734268,-122.152549]
-  },
-  {
-    id: 'Earth-3',
-    mainText: `Collect s'mores stuff`,
-    subText: `Buy chocolate and marshmallows from Pete's`,
-    planet: 'Earth',
-    completed: false,
-    trackCoords: [47.641765,-122.326487]
-  },
-  {
-    id: 'Earth-4',
-    mainText: 'Get a bottle of wine',
-    subText: 'Visit the Columbia Winery in Woodenville',
-    planet: 'Earth',
-    completed: false,
-    trackCoords: [47.734268,-122.152549]
+    trackCoords: [47.639937, -122.329336]
   },
   {
     id: 'Mars-1',
-    mainText: 'Go to the spa',
-    subText: 'Visit the spa with Amanda and Malissa.',
+    mainText: 'Equip gear and hit the road',
+    subText: `Pack a bag and drive toward Bellevue`,
     planet: 'Mars',
     completed: false,
-    trackCoords: [47.617326, -122.330787]
+    trackCoords: [47.638697, -122.241656]
+  },
+  {
+    id: 'Mars-2',
+    mainText: 'Find wine in Woodenville',
+    subText: 'Visit the Columbia Winery',
+    planet: 'Mars',
+    completed: false,
+    trackCoords: [47.734268,-122.152549]
   },
   {
     id: 'Venus-1',
-    mainText: 'Go to the spa',
-    subText: 'Visit the spa with Amanda and Malissa.',
+    mainText: `Go to Leavenworth`,
+    subText: 'Navigate to the center of town',
     planet: 'Venus',
     completed: false,
-    trackCoords: [47.617326, -122.330787]
+    trackCoords: [47.595447, -120.660692]
+  },
+  {
+    id: 'Venus-2',
+    mainText: `Find Run of the River`,
+    subText: 'Check in at the B&B',
+    planet: 'Venus',
+    completed: false,
+    trackCoords: [47.585451, -120.662003]
   }
 ];
 
