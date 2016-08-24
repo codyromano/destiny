@@ -38,6 +38,9 @@ class Tracker extends Component {
   }
   render() {
     let {milesAway, direction} = this.state;
+    let coords = this.props.trackCoords;
+    let googleMapsURL = `https://www.google.com/maps/place/${coords[0]},${coords[1]}`;
+
     let content = (<div></div>);
     let isNumber = (n) => !isNaN(parseInt(n));
 
@@ -47,7 +50,11 @@ class Tracker extends Component {
 
     } else if (milesAway !== null && this.props.tracking) {
       content = (<div className={s.tracker}>
-        <strong className={s.milesAway}>{milesAway}mi</strong><span className={s.direction}>{direction}</span></div>);
+        <strong className={s.milesAway}>{milesAway}mi</strong>
+        <span className={s.direction}>{direction}</span><br/>
+        <a href={googleMapsURL} 
+        className={s.mapLink} target="_blank">Map</a>
+      </div>);
     }
     return content;
   }
