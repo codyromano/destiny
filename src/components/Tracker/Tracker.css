@@ -36,8 +36,7 @@
 }
 .mapLink {
   text-decoration: none;
-  color: #123;
-  font-size: 0.75rem;
+  color: #333;
 }
 .mapLink::after {
   content: '';

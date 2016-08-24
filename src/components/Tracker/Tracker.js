@@ -51,7 +51,6 @@ class Tracker extends Component {
     } else if (milesAway !== null && this.props.tracking) {
       content = (<div className={s.tracker}>
         <strong className={s.milesAway}>{milesAway}mi</strong>
-        <span className={s.direction}>{direction}</span><br/>
         <a href={googleMapsURL} 
         className={s.mapLink} target="_blank">Map</a>
       </div>);
