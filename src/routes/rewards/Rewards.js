@@ -15,7 +15,7 @@ class Reward extends Component {
       planetName: 'Mars'
     };
     this.state = {
-      countdown: 15
+      countdown: 10
     };
   }
 
@@ -45,7 +45,8 @@ class Reward extends Component {
       });
       setTimeout(this.startCountdown.bind(this), 1000);
     } else {
-     history.push({pathname: '/orbit'});
+      console.log('redirect to orbit');
+      window.location.href = '/orbit';
     }
   }
 
