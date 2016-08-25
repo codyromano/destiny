@@ -7,9 +7,14 @@ function Html({ title, description, style, script, children }) {
       <head>
         <meta charSet="utf-8" />
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
-        <title>{title}</title>
+        <title>Cait's Destiny Game</title>
         <meta name="description" content={description} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta property="og:url" content="https://caitdestiny.com/"/>
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content="Cait's Destiny Game" />
+        <meta property="og:description" content="A surprise for my girlfriend, Cait, for our 5-year anniversary. Based on her favorite video game" />
+        <meta property="og:image" content="https://caitdestiny.com/images/Explore_Mars.jpg" />
         <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet" type="text/css"/>
         <link rel="apple-touch-icon" href="apple-touch-icon.png" />
         <style id="css" dangerouslySetInnerHTML={{ __html: style }} />
