@@ -12,8 +12,8 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './ErrorPage.css';
 
 export function ErrorPage({ error }, context) {
-  let title = 'Error';
-  let content = 'Sorry, a critical error occurred on this page.';
+  let title = ' ';
+  let content = ' ';
   let errorMessage = null;
 
   if (error.status === 404) {
