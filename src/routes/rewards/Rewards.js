@@ -58,8 +58,11 @@ class Reward extends Component {
     let {countdown} = this.state;
     let {planetName} = this.props;
 
-    let itemTitle = this.gameComplete() ? 'box' : planetName;
-    let uri = `/images/${planetName}.png`;
+    let itemTitle = this.gameComplete() ? '100% complete' : ('Unlocked ' + planetName);
+    let uri = this.gameComplete() ? `/images/cody-cait.jpg` :
+      `/images/${planetName}.png`;
+      
+
     let backMessage = '';
 
     if (!this.gameComplete()) {
@@ -74,11 +77,13 @@ class Reward extends Component {
       <img src={uri} className={s.planet}/>
     </div>);
 
+    /*
     if (this.gameComplete()) {
       graphic = (<div className={s.unlockedWrapper}>
-        <div className={s.unlockCode}>0724</div>
+        <div className={s.unlockCode}>???</div>
       </div>);
     }
+    */
 
     return (
       <div className={s.root}>
@@ -89,7 +94,7 @@ class Reward extends Component {
           </h1>
         </div>
         <div className={s.continueWrapper} ref="planetHeadingWrapper">
-          <h2>Unlocked {itemTitle}</h2>
+          <h2>{itemTitle}</h2>
         </div>
         {graphic}
 
