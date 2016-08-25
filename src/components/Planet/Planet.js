@@ -41,7 +41,7 @@ class Planet extends Component {
 
   render() {
     let {name, imageSrc, width, discovered} = this.props;
-    name = discovered ? name : '?';
+    name = discovered ? name : (<img src="/images/padlock.png" className={s.lockedIcon}/>);
 
     let style = {
       width: (width || 100) + '%'
@@ -58,8 +58,8 @@ class Planet extends Component {
       let extraNeeded = DestinyStore.getGlimmerNeeded(this.props.name);
 
       lockedModal = (<div ref="lockedModal" className={s.lockedModal}>
-        You need <span className={s.glimmerText}>{extraNeeded}</span> more glimmer to unlock this. Complete
-         objectives to earn glimmer.
+        Earn <span className={s.glimmerText}>{extraNeeded}</span> more glimmer to
+        unlock this planet
       </div>);
     }
 

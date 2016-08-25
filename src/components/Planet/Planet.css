@@ -1,12 +1,12 @@
 .planet {
   position: relative;
-  top: 5rem;
-
+  top: 4rem;
+  min-height: 10rem;
   width: 100%;
   max-width: 30rem;
   padding: 0%;
   text-align: center;
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .glimmerText::before {
@@ -23,18 +23,12 @@
 .lockedModal {
   position: absolute;
   bottom: 0%;
-  width: 75%;
-  left: 12.5%;
-  right: 12.5%;
+  width: 60%;
+  left: 20%;
   background-color: rgba(0, 0, 0, 0.5);
   color: #fff;
   padding: 0.5rem;
   font-size: 0.9rem;
-  opacity: 0;
-  transition: opacity ease 1s;
-}
-.lockedModal.showing {
-  opacity: 1;
 }
 
 .planetPreloading {
@@ -67,14 +61,27 @@
 .planetImage, .planetImageDiscovered {
   margin: 0 auto;
   width: 100%;
-  /* TODO: Remove this when you have a proper planet graphic */
-  border-radius: 50%;
   transition: all ease 0.5s;
 }
 
+.lockedIcon {
+  width: 2rem;
+  height: 2rem;
+  margin-left: -1rem;
+  opacity: 0.75;
+}
+
 .planetImage {
+  position: relative;
   text-align: center;
   opacity: .5;
+}
+
+.planetImage::after {
+  content: 'testing';
+  color: red;
+  display: block;
+  font-weight: 20rem;
 }
 
 .planet:hover .planetImage {
