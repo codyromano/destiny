@@ -24,7 +24,7 @@ cd build && node server
 open http://localhost:3000
 ```
 
-## Set up HTTP for Prod (Optional)
+## Set up HTTPS for Prod (Optional)
 
 I don't expect anyone will want or need to follow this step. It's mostly for my own future reference. But on the off chance you want to run this app on your own domain, you'll need to get your own SSL key and certificate. I got a free one from [StartSSL](https://startssl.com). 
 
