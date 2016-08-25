@@ -167,7 +167,7 @@ function getThreshold() {
   // return localStore.get('threshold') || 0.05;
   let threshold = localStore.get('threshold');
   if (threshold === null || isNaN(threshold)) {
-    return 0.025;
+    return 0.01;
   }
   return parseFloat(threshold);
 }
