@@ -9,6 +9,7 @@
 }
 .objective {
   color: #666;
+  position: relative;
 }
 .mainText {
   font-size: 1.35rem;
@@ -38,6 +39,7 @@
   width: 55%;
   min-width: 16rem;
   max-width: 25rem;
+  padding-right: 1rem;
 }
 .objectiveElement:nth-of-type(3) {
   width: 15%;
@@ -53,7 +55,8 @@
 .enableGPSWrapper {
   position: relative;
   height: 100%;
-  top: 1.5rem;
+  top: 2rem;
+  left: 1rem;
   width: 3rem;
   padding-top: 2rem;
   margin-top: -2.5rem;
@@ -64,7 +67,7 @@
   pointer-events: none;
   content: '';
   opacity: 0.5;
-  background: url(https://cdn4.iconfinder.com/data/icons/pictype-free-vector-icons/16/location-alt-256.png) no-repeat center;
+  background: url(/images/track.png) no-repeat center;
   background-size: cover;
   width: 2rem;
   height: 2rem;
@@ -75,9 +78,15 @@
   margin-left: -1rem;
 }
 .enableGPSWrapper.geolocating::before {
-  background-image: url(https://www.tangeroutlet.com/images/ipad-map/WIFI-Icon.gif);
+  color: #111;
+  content: 'Waiting for GPS';
+  display: block;
+  font-size: 0.8rem;
+  font-weight: bold;
+  background-image: none;
   background-size: contain;
-  background-position: -0.15rem 0.5rem;
+  top: 0.5rem;
+  left: 0rem;
   width: 100%;
 }
 .enableGPSWrapper button {

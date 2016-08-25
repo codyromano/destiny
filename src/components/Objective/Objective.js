@@ -55,7 +55,7 @@ class Objective extends Component {
       mainText = 'Completed';
     } else if (!active) {
       mainText = 'Locked';
-      subText = `Complete previous objectives to unlock this`;
+      subText = `Complete previous objectives first`;
     }
 
     return (<div ref="wrapper" className={objClass}>
