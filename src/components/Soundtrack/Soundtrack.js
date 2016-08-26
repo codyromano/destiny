@@ -20,7 +20,11 @@ class Soundtrack extends Component {
 
   getSavedSetting(audioSrc) {
     let saved = localStorage.getItem('shouldPlay-' + audioSrc);
-    return (saved === 'true') ? true : false;
+    if (typeof saved === 'string') {
+      return (saved === 'true');
+    } else {
+      return true;
+    }
   }
 
   enterPlayState() {
