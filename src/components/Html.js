@@ -18,6 +18,7 @@ function Html({ title, description, style, script, children }) {
         <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet" type="text/css"/>
         <link rel="apple-touch-icon" href="apple-touch-icon.png" />
         <style id="css" dangerouslySetInnerHTML={{ __html: style }} />
+        <link rel="stylesheet" type="text/css" href="/global.css"/>
       </head>
       <body>
         <div id="app" dangerouslySetInnerHTML={{ __html: children }} />
